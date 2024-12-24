@@ -195,6 +195,40 @@ body {
     pointer-events: none; /* Prevent clicks on images */
 }
 
+/* Target styles for Room 2 */
+#area-object1 {
+    position: absolute;
+    width: 17%;
+    height: 5%;
+    left: calc(85% - 8.5%);
+    top: calc(42% - 2.5%);
+    border: 1px dashed red; /* Debugging border */
+    background-color: transparent;
+    z-index: 2;
+}
+
+#area-object2 {
+    position: absolute;
+    width: 22%;
+    height: 11%;
+    left: calc(35% - 11%);
+    top: calc(68% - 5.5%);
+    border: 1px dashed red; /* Debugging border */
+    background-color: transparent;
+    z-index: 2;
+}
+
+#area-object3 {
+    position: absolute;
+    width: 20%;
+    height: 13%;
+    left: calc(67% - 10%);
+    top: calc(68% - 6.5%);
+    border: 1px dashed red; /* Debugging border */
+    background-color: transparent;
+    z-index: 2;
+}
+
 #room-2 .click-area {
     position: absolute;
     cursor: pointer;
