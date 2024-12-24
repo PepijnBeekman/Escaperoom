@@ -184,15 +184,12 @@ body {
     left: 0;
 }
 
-
 #room-2 .object-overlay {
     z-index: 1;
     pointer-events: none; /* Prevent clicks on images */
 }
 
-
-
-#image-container {
+#room-2 #image-container {
     position: relative;
     width: 100%;
     max-width: 800px;
@@ -204,31 +201,26 @@ body {
     height: auto;
 }
 
-.click-area {
+.object {
     position: absolute;
-    border: 2px dashed red; /* Debugging border */
-    background-color: transparent; /* Ensure areas are invisible but clickable */
     cursor: pointer;
 }
 
-/* Specific clickable areas */
-#pizza-area {
-    width: 15%; /* Adjust to fit the pizza */
-    height: 10%;
-    left: 20%; /* Adjust to position the pizza */
-    top: 45%; /* Adjust to position the pizza */
+/* Position each object */
+#pizza {
+    width: 15%; /* Adjust to match the pizza size */
+    left: 20%; /* Adjust to align with the pizza in the background */
+    top: 45%; /* Adjust to align with the pizza in the background */
 }
 
-#sushi-area {
-    width: 18%; /* Adjust to fit the sushi */
-    height: 12%;
-    left: 60%; /* Adjust to position the sushi */
-    top: 50%; /* Adjust to position the sushi */
+#sushi {
+    width: 18%; /* Adjust to match the sushi size */
+    left: 60%; /* Adjust to align with the sushi in the background */
+    top: 50%; /* Adjust to align with the sushi in the background */
 }
 
-#flag-area {
-    width: 10%; /* Adjust to fit the flag */
-    height: 20%;
-    left: 85%; /* Adjust to position the flag */
-    top: 30%; /* Adjust to position the flag */
+#flag {
+    width: 10%; /* Adjust to match the flag size */
+    left: 85%; /* Adjust to align with the flag in the background */
+    top: 30%; /* Adjust to align with the flag in the background */
 }
