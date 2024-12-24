@@ -175,13 +175,6 @@ body {
     border-radius: 5px;
     cursor: pointer;
 }
-#room-2 #image-container {
-    border: 1px solid blue; /* Debugging border */
-    position: relative;
-    width: 100%;
-    max-width: 800px;
-    height: auto; /* Ensure height is proportional */
-}
 
 #room-2 img {
     position: absolute;
@@ -191,47 +184,51 @@ body {
     left: 0;
 }
 
-#room-2 #room2-background {
-    display: block;
-    width: 100%; /* Ensure the image fills the container width */
-    height: auto; /* Maintain aspect ratio */
-}
 
 #room-2 .object-overlay {
     z-index: 1;
     pointer-events: none; /* Prevent clicks on images */
 }
 
-/* Remove redundant .click-area styles */
-#area-object1, #area-object2, #area-object3 {
+
+
+#image-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#room2-background {
+    width: 100%;
+    height: auto;
+}
+
+.click-area {
     position: absolute;
-    transform: none; /* Remove centering transformations */
-    z-index: 2;
-    border: 1px dashed red; /* Debugging border */
-    background-color: transparent;
+    border: 2px dashed red; /* Debugging border */
+    background-color: transparent; /* Ensure areas are invisible but clickable */
     cursor: pointer;
 }
 
-
-#area-object1 {
-    width: 17%;
-    height: 15%;
-    left: calc(85% - 8.5%);
-    top: calc(42% - 2.5%);
+/* Specific clickable areas */
+#pizza-area {
+    width: 15%; /* Adjust to fit the pizza */
+    height: 10%;
+    left: 20%; /* Adjust to position the pizza */
+    top: 45%; /* Adjust to position the pizza */
 }
 
-#area-object2 {
-    width: 22%;
-    height: 11%;
-    left: calc(35% - 11%);
-    top: calc(68% - 5.5%);
+#sushi-area {
+    width: 18%; /* Adjust to fit the sushi */
+    height: 12%;
+    left: 60%; /* Adjust to position the sushi */
+    top: 50%; /* Adjust to position the sushi */
 }
 
-#area-object3 {
-    width: 20%;
-    height: 13%;
-    left: calc(67% - 10%);
-    top: calc(68% - 6.5%);
+#flag-area {
+    width: 10%; /* Adjust to fit the flag */
+    height: 20%;
+    left: 85%; /* Adjust to position the flag */
+    top: 30%; /* Adjust to position the flag */
 }
-
-
