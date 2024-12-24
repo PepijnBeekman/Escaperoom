@@ -11,6 +11,7 @@ body {
     transition: background-image 0.5s ease-in-out;
 }
 
+/* Global room styles */
 .room {
     display: none;
     flex-direction: column;
