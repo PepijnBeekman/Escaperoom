@@ -2,74 +2,6 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-size: cover;
-    background-position: center;
-    transition: background-image 0.5s ease-in-out;
-}
-
-#room-1 #word-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-}
-
-#room-1 .word {
-    margin: 5px;
-    padding: 5px 10px;
-    background-color: #f1c40f;
-    border: 1px solid #d35400;
-    cursor: grab;
-}
-
-#room-1 #image-container {
-    position: relative;
-    width: 80%;
-    margin: auto;
-}
-
-#room-1 #background-image {
-    width: 100%;
-}
-
-#room-1 .drop-target {
-    position: absolute;
-    width: 10%;
-    height: 10%;
-    background-color: rgba(255, 255, 255, 0.2); /* Highlight for testing */
-    border: 1px dashed #000;
-}
-
-#room-1 #tree-target {
-    top: 20%;
-    left: 30%;
-}
-
-#room-1 #fireplace-target {
-    top: 50%;
-    left: 60%;
-}
-
-#room-1 #pot-target {
-    top: 70%;
-    left: 40%;
-}
-
-#room-1 #key-outline {
-    display: block;
-    margin: 20px auto;
-}
-
-#room-1 .hidden {
-    display: none;
-}
-body {
-    margin: 0;
-    padding: 0;
-    display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
@@ -79,7 +11,6 @@ body {
     transition: background-image 0.5s ease-in-out;
 }
 
-/* Global room styles */
 .room {
     display: none;
     flex-direction: column;
@@ -95,45 +26,16 @@ body {
 }
 
 /* Intro Room */
-#intro {
-    background-image: url('images/ChristmasBackground.jpg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-#intro h1,
-#intro p {
+#intro h1, #intro p {
     font-family: "Dancing Script", cursive;
     color: white;
     text-shadow: 2px 2px 4px black;
 }
 
-/* Room 1 Specific */
-#room-1 #key-outline {
-    margin: 20px 0;
-}
-
-#room-1 #hint-button {
-    margin-top: 10px;
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-    padding: 10px 20px;
-    background-color: #c0392b; /* Red bounding box */
-    color: gold; /* Gold text */
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-#room-1 #hint-button:hover {
-    background-color: #a93226;
-}
-
+/* Room 1 Styling */
 #room-1 #image-container {
     position: relative;
-    width: 100%;
+    width: 80%;
     max-width: 800px;
     margin: 20px 0;
     background: white;
@@ -146,95 +48,24 @@ body {
     height: auto;
 }
 
-/* Word Container */
-#room-1 #word-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-}
-
 #room-1 .word {
+    font-family: "Playfair Display", serif;
     margin: 5px;
-    padding: 5px 10px;
-    background-color: #f1c40f;
-    border: 1px solid #d35400;
-    border-radius: 3px;
+    padding: 10px;
+    color: gold;
+    background-color: #c0392b;
+    border: 2px solid gold;
+    border-radius: 5px;
     cursor: grab;
     user-select: none;
 }
 
-/* Drop Targets */
-#room-1 .drop-target {
-    position: absolute;
-    background-color: rgba(255, 255, 255, 0.2); /* Highlight for testing */
-    border: 1px dashed #000;
-}
-
-#room-1 #fireplace-target {
-    width: 35%;
-    height: 25%;
-    top: calc(65% - 12.5%);
-    left: calc(18% - 17.5%);
-}
-
-#room-1 #pot-target {
-    width: 15%;
-    height: 11%;
-    top: calc(85% - 5.5%);
-    left: calc(15% - 7.5%);
-}
-
-#room-1 #tree-target {
-    width: 22%;
-    height: 66%;
-    top: calc(50% - 33%);
-    left: calc(89% - 11%);
-}
-
-.room {
-    display: none;
-    padding: 20px;
-    text-align: center;
-}
-
-.room.active {
-    display: block;
-}
-
-h1 {
-    color: #333;
-}
-
-.game-area {
-    margin: 20px auto;
-    max-width: 600px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-}
-
-.phrases, .objects {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.object, .item {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+#room-1 #hint-button {
+    font-family: "Playfair Display", serif;
+    padding: 10px 20px;
+    background-color: #c0392b;
+    color: gold;
+    border: 2px solid gold;
+    border-radius: 5px;
     cursor: pointer;
-    text-align: center;
-    transition: transform 0.2s;
 }
-
-.object:hover, .item:hover {
-    transform: scale(1.1);
-}
-
-.hidden {
-    display: none;
-}
-
