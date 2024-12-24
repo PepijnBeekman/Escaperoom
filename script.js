@@ -36,7 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const keyImages = ["images/key0.png", "images/key1.png", "images/key2.png", "images/key3.png"];
     let keyProgress = 0;
     const keyOutline = document.getElementById("key-outline");
-    const nextRoomButton = document.getElementById("next-room-button");
     const hintButton = document.getElementById("hint-button");
     const hintText = "Sleep de juiste woorden naar de juiste plek";
 
@@ -74,8 +73,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (word) word.remove();
 
                 if (keyProgress === keyImages.length - 1) {
-                    console.log("All targets matched. Showing next room button.");
-                    nextRoomButton.style.display = "block"; // Unhide the button
+                    console.log("Key is fully revealed. Ready to load Room 2.");
+                    keyOutline.addEventListener("click", () => {
+                        showRoom("room-2");
+                    }, { once: true }); // Ensure Room 2 only loads once on click
                 }
             } else {
                 console.log(`Word incorrectly dropped on target: ${targetId}`);
@@ -86,11 +87,6 @@ document.addEventListener("DOMContentLoaded", () => {
     hintButton.addEventListener("click", () => {
         console.log("Hint button clicked");
         alert(hintText); // Show hint text as a browser alert
-    });
-
-    nextRoomButton.addEventListener("click", () => {
-        console.log("Next room button clicked");
-        showRoom("room-2");
     });
 
     // Initial setup to hide all rooms except the active one
@@ -110,7 +106,4 @@ document.addEventListener("DOMContentLoaded", () => {
     // Ensure key0.png is displayed initially
     keyOutline.src = keyImages[0];
     keyOutline.style.display = "block";
-
-    // Ensure Room 1 starts with only the hint text and next button hidden
-    nextRoomButton.style.display = "none";
 });
