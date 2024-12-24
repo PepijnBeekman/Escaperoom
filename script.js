@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const keyOutline = document.getElementById("key-outline");
     const nextRoomButton = document.getElementById("next-room-button");
     const hintButton = document.getElementById("hint-button");
-    const hintText = document.getElementById("hint-text");
+    const hintText = "Sleep de juiste woorden naar de juiste plek";
 
     const dropTargets = document.querySelectorAll("#room-1 .drop-target");
     const words = document.querySelectorAll("#room-1 .word");
@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     hintButton.addEventListener("click", () => {
         console.log("Hint button clicked");
-        hintText.classList.toggle("hidden");
+        alert(hintText); // Show hint text as a browser alert
     });
 
     nextRoomButton.addEventListener("click", () => {
@@ -106,6 +106,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Ensure Room 1 starts with only the hint text and next button hidden
-    hintText.classList.add("hidden");
     nextRoomButton.classList.add("hidden");
 });

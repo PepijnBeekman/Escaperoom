@@ -142,10 +142,15 @@ body {
     border: 1px dashed #000;
 }
 
-
-#room-1 #key-outline {
-    margin: 20px 0;
+/* Key outline scaling */
+#key-outline {
+    display: block;
+    margin: 20px auto;
+    width: 50%; /* 50% of the container width */
+    max-width: calc(50% - 20px); /* Account for padding and spacing */
+    height: auto;
 }
+
 
 #room-1 #hint-button {
     margin-top: 10px;
