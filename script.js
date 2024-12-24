@@ -65,6 +65,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.log(`Correct drop: ${target.id}`);
                 target.classList.add("correct");
 
+                // Update key level
+                const keyOutline = document.getElementById("key-outline");
+                if (keyOutline) {
+                    let currentLevel = parseInt(keyOutline.dataset.level || "0");
+                    currentLevel++;
+                    keyOutline.dataset.level = currentLevel;
+                    keyOutline.src = `images/key${currentLevel}.png`;
+                    console.log(`Key leveled up to: ${currentLevel}`);
+                }
+
                 const allCorrect = [...dropTargets].every((t) =>
                     t.classList.contains("correct")
                 );
