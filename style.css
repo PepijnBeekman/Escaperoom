@@ -110,6 +110,27 @@ body {
 }
 
 /* Room 1 Specific */
+#room-1 #key-outline {
+    margin: 20px 0;
+}
+
+#room-1 #hint-button {
+    margin-top: 10px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    background-color: #c0392b; /* Red bounding box */
+    color: gold; /* Gold text */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#room-1 #hint-button:hover {
+    background-color: #a93226;
+}
+
 #room-1 #image-container {
     position: relative;
     width: 100%;
