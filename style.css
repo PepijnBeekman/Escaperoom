@@ -10,6 +10,62 @@ body {
     transition: background-image 0.5s ease-in-out;
 }
 
+#room-1 #word-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+#room-1 .word {
+    margin: 5px;
+    padding: 5px 10px;
+    background-color: #f1c40f;
+    border: 1px solid #d35400;
+    cursor: grab;
+}
+
+#room-1 #image-container {
+    position: relative;
+    width: 80%;
+    margin: auto;
+}
+
+#room-1 #background-image {
+    width: 100%;
+}
+
+#room-1 .drop-target {
+    position: absolute;
+    width: 10%;
+    height: 10%;
+    background-color: rgba(255, 255, 255, 0.2); /* Highlight for testing */
+    border: 1px dashed #000;
+}
+
+#room-1 #tree-target {
+    top: 20%;
+    left: 30%;
+}
+
+#room-1 #fireplace-target {
+    top: 50%;
+    left: 60%;
+}
+
+#room-1 #pot-target {
+    top: 70%;
+    left: 40%;
+}
+
+#room-1 #key-outline {
+    display: block;
+    margin: 20px auto;
+}
+
+#room-1 .hidden {
+    display: none;
+}
 
 .room {
     display: none;

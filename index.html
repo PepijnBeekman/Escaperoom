@@ -85,25 +85,38 @@
 </head>
 <body>
     <div id="intro" class="room active">
-        <h1>Welkom bij de Kerst Escape Room!</h1>
-        <p>Je bent beland in een online escaperoom. Puzzel je een weg door de uitdagingen en ontdek jouw kerstcadeau!</p>
+        <h1>Welkom bij je eigen Kerst Escape Room!</h1>
+        <p>Hey lekker ding, ik ben weer creatief bezig geweest. Puzzel je een weg door de uitdagingen en ontdek jouw kerstcadeau!</p>
         <button id="start-escape">Begin Escaperoom</button>
     </div>
 
-    <div id="room-1" class="room">
-        <h1>Kamer 1: Match de Zinnen</h1>
-        <div class="game-area">
-            <div class="phrases">
-                <p draggable="true" class="phrase" data-match="tree">Frohe Weihnachten</p>
-                <p draggable="true" class="phrase" data-match="beer">Prost!</p>
-            </div>
-            <div class="objects">
-                <div class="object" id="tree">🎄</div>
-                <div class="object" id="beer">🍺</div>
-            </div>
+    <div id="room-1" class="room active">
+        <h1>Room 1: Match de Woorden</h1>
+        <div id="word-container">
+            <p draggable="true" class="word" data-language="German" data-target="tree-target">Tannenbaum</p>
+            <p draggable="true" class="word" data-language="French" data-target="">Sapin</p>
+            <p draggable="true" class="word" data-language="Danish" data-target="">Juletræ</p>
+            <p draggable="true" class="word" data-language="German" data-target="fireplace-target">Feuerstelle</p>
+            <p draggable="true" class="word" data-language="French" data-target="">Cheminée</p>
+            <p draggable="true" class="word" data-language="Danish" data-target="">Pejs</p>
+            <p draggable="true" class="word" data-language="German" data-target="pot-target">Glühwein</p>
+            <p draggable="true" class="word" data-language="French" data-target="">Vin Chaud</p>
+            <p draggable="true" class="word" data-language="Danish" data-target="">Gløgg</p>
         </div>
-        <button id="to-room-2" class="hidden">Ga naar Kamer 2</button>
+    
+        <div id="image-container">
+            <img id="background-image" src="Room1.jpg" alt="Room 1">
+            <div id="tree-target" class="drop-target"></div>
+            <div id="fireplace-target" class="drop-target"></div>
+            <div id="pot-target" class="drop-target"></div>
+        </div>
+    
+        <img id="key-outline" src="key0.jpg" alt="Key Outline">
+        <button id="hint-button">Hint</button>
+        <p id="hint-text" class="hidden">Sleep de juiste woorden naar de juiste plek</p>
+        <button id="next-room-button" class="hidden">Ga naar Kamer 2</button>
     </div>
+    
 
     <div id="room-2" class="room">
         <h1>Kamer 2: Vind de Cijfers</h1>
