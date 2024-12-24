@@ -64,15 +64,11 @@ document.addEventListener("DOMContentLoaded", () => {
         showRoom("room-2");
     });
 
-    // Initial setup
+    // Initial setup to hide all rooms except the active one
     rooms.forEach((room) => {
         room.style.opacity = "0";
         room.style.transition = "opacity 0.5s ease-in-out";
-        if (!room.classList.contains("active")) {
-            room.style.display = "none";
-        } else {
-            room.style.opacity = "1";
-        }
+        room.style.display = room.classList.contains("active") ? "flex" : "none";
     });
 
     // Ensure Room 1 starts with only the next button hidden
