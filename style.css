@@ -66,6 +66,110 @@ body {
 #room-1 .hidden {
     display: none;
 }
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f8e8e8; /* Faint classy pink */
+    overflow-y: auto;
+    transition: background-image 0.5s ease-in-out;
+}
+
+/* Global room styles */
+.room {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.room.active {
+    display: flex;
+}
+
+/* Intro Room */
+#intro {
+    background-image: url('images/ChristmasBackground.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#intro h1,
+#intro p {
+    font-family: "Dancing Script", cursive;
+    color: white;
+    text-shadow: 2px 2px 4px black;
+}
+
+/* Room 1 Specific */
+#room-1 #image-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 20px 0;
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#room-1 #image-container img {
+    width: 100%;
+    height: auto;
+}
+
+/* Word Container */
+#room-1 #word-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+#room-1 .word {
+    margin: 5px;
+    padding: 5px 10px;
+    background-color: #f1c40f;
+    border: 1px solid #d35400;
+    border-radius: 3px;
+    cursor: grab;
+    user-select: none;
+}
+
+/* Drop Targets */
+#room-1 .drop-target {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.2); /* Highlight for testing */
+    border: 1px dashed #000;
+}
+
+#room-1 #fireplace-target {
+    width: 35%;
+    height: 25%;
+    top: calc(65% - 12.5%);
+    left: calc(18% - 17.5%);
+}
+
+#room-1 #pot-target {
+    width: 15%;
+    height: 11%;
+    top: calc(85% - 5.5%);
+    left: calc(15% - 7.5%);
+}
+
+#room-1 #tree-target {
+    width: 22%;
+    height: 66%;
+    top: calc(50% - 33%);
+    left: calc(89% - 11%);
+}
 
 .room {
     display: none;
