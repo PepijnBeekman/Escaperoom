@@ -26,7 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Intro page logic
-    document.getElementById("start-escape").addEventListener("click", () => {
+    const startEscapeButton = document.getElementById("start-escape");
+    startEscapeButton.addEventListener("click", () => {
         console.log("Start Escape Room clicked");
         showRoom("room-1");
     });
@@ -106,15 +107,10 @@ document.addEventListener("DOMContentLoaded", () => {
         room.style.transition = "opacity 0.5s ease-in-out";
     });
 
-    // Adjust key outline size based on image container
-    const imageContainer = document.getElementById("image-container");
-    const adjustKeyOutlineSize = () => {
-        keyOutline.style.width = `${imageContainer.offsetWidth / 2}px`;
-    };
-    window.addEventListener("resize", adjustKeyOutlineSize);
-    adjustKeyOutlineSize();
+    // Ensure key0.png is displayed initially
+    keyOutline.src = keyImages[0];
+    keyOutline.style.display = "block";
 
     // Ensure Room 1 starts with only the hint text and next button hidden
     nextRoomButton.style.display = "none";
-    keyOutline.style.display = "none"; // Ensure key is hidden initially
 });
