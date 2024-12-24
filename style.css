@@ -27,16 +27,49 @@ body {
 }
 
 /* Intro Room */
-#intro h1, #intro p {
+#intro {
+    background-image: url('images/ChristmasBackground.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#intro h1,
+#intro p {
     font-family: "Dancing Script", cursive;
     color: white;
     text-shadow: 2px 2px 4px black;
 }
 
-/* Room 1 Styling */
+#intro h1 {
+    font-size: 3rem;
+    margin-top: 20px;
+}
+
+#intro p {
+    font-size: 1.5rem;
+}
+
+#intro button {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    padding: 10px 20px;
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#intro button:hover {
+    background-color: #c0392b;
+}
+
+/* Room 1 Specific */
 #room-1 #image-container {
     position: relative;
-    width: 80%;
+    width: 100%;
     max-width: 800px;
     margin: 20px 0;
     background: white;
@@ -49,24 +82,75 @@ body {
     height: auto;
 }
 
+#room-1 #word-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
 #room-1 .word {
-    font-family: "Playfair Display", serif;
     margin: 5px;
-    padding: 10px;
-    color: gold;
-    background-color: #c0392b;
-    border: 2px solid gold;
-    border-radius: 5px;
+    padding: 5px 10px;
+    background-color: #f1c40f;
+    border: 1px solid #d35400;
+    border-radius: 3px;
     cursor: grab;
     user-select: none;
 }
 
-#room-1 #hint-button {
-    font-family: "Playfair Display", serif;
+/* Drop Targets */
+#room-1 .drop-target {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.2); /* Highlight for testing */
+    border: 1px dashed #000;
+}
+
+#room-1 #fireplace-target {
+    width: 35%;
+    height: 25%;
+    top: calc(65% - 12.5%);
+    left: calc(18% - 17.5%);
+}
+
+#room-1 #pot-target {
+    width: 15%;
+    height: 11%;
+    top: calc(85% - 5.5%);
+    left: calc(15% - 7.5%);
+}
+
+#room-1 #tree-target {
+    width: 22%;
+    height: 66%;
+    top: calc(50% - 33%);
+    left: calc(89% - 11%);
+}
+
+#room-1 #key-outline {
+    margin: 20px 0;
+}
+
+#room-1 #hint-text {
+    display: none;
+    margin: 20px;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+#room-1 #next-room-button {
+    display: none;
+    margin-top: 20px;
+    font-size: 1.2rem;
     padding: 10px 20px;
-    background-color: #c0392b;
-    color: gold;
-    border: 2px solid gold;
+    background-color: #27ae60;
+    color: #fff;
+    border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#room-1 #next-room-button:hover {
+    background-color: #1e8449;
 }

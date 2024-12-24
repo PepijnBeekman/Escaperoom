@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Escape Room</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
     <script defer src="script.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Intro Room -->
@@ -43,22 +44,36 @@
         <button id="next-room-button" class="hidden">Ga naar Kamer 2</button>
     </div>
 
-    <!-- Room 2 -->
+    <!-- Room 2 Placeholder -->
     <div id="room-2" class="room">
         <h1>Kamer 2</h1>
         <!-- Content to be added later -->
     </div>
 
-    <!-- Room 3 -->
+    <!-- Room 3 Placeholder -->
     <div id="room-3" class="room">
         <h1>Kamer 3</h1>
         <!-- Content to be added later -->
     </div>
 
-    <!-- End Screen -->
+    <!-- End Screen Placeholder -->
     <div id="end-screen" class="room">
         <h1>Gefeliciteerd!</h1>
         <p>Je hebt het geraden: Düsseldorf!</p>
     </div>
+
+    <script>
+        const rooms = document.querySelectorAll(".room");
+        const body = document.body;
+
+        function showRoom(roomId) {
+            rooms.forEach((room) => room.classList.remove("active"));
+            document.getElementById(roomId).classList.add("active");
+        }
+
+        document.getElementById("start-escape").addEventListener("click", () => {
+            showRoom("room-1");
+        });
+    </script>
 </body>
 </html>
