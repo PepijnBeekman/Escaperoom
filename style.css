@@ -198,19 +198,19 @@ body {
 
 /* Specific positions for each object */
 #pizza {
-    width: 15%; /* Adjust to fit the pizza size */
-    left: 20%; /* Percentage of container width */
-    top: 45%; /* Percentage of container height */
+    width: 21%; /* Adjust to fit the pizza size */
+    left: 35%; /* Percentage of container width */
+    top: 68%; /* Percentage of container height */
 }
 
 #sushi {
-    width: 18%;
-    left: 60%;
-    top: 50%;
+    width: 20%;
+    left: 68%;
+    top: 67%;
 }
 
 #flag {
-    width: 10%;
+    width: 17%;
     left: 85%;
-    top: 30%;
+    top: 42%;
 }
