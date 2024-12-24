@@ -10,10 +10,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (targetElement) {
                 targetElement.style.display = "none"; // Hide the overlay
-                area.style.display = "none"; // Disable the click area
+                area.style.display = "none"; // Hide the click area
             }
 
-            // Check if all objects are hidden
+            // Check if all overlays are hidden
             const allHidden = [...document.querySelectorAll(".object-overlay")].every(
                 (obj) => obj.style.display === "none"
             );
@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
+
 
     function showRoom(roomId) {
         console.log(`Showing room: ${roomId}`);

@@ -199,7 +199,8 @@ body {
     position: absolute;
     cursor: pointer;
     z-index: 2;
-    background-color: rgba(255, 255, 255, 0.2); /* Highlight for debugging */
-    border: 1px solid transparent; /* Remove in production */
+    border: 1px solid red; /* Debugging: Thin outline for regions */
+    background-color: transparent; /* Make sure background is fully transparent */
     transform: translate(-50%, -50%); /* Center positioning */
 }
+
