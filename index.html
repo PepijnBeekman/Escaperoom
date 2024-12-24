@@ -1,15 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Escape Room</title>
     <link rel="stylesheet" href="styles.css">
     <script defer src="script.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            transition: background-image 0.5s ease-in-out;
+        }
+        .room {
+            display: none;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+        }
+        .room.active {
+            display: block;
+        }
+    </style>
 </head>
 <body>
+    <div id="intro" class="room active">
+        <h1>Welkom bij de Kerst Escape Room!</h1>
+        <p>Je bent beland in een online escaperoom. Puzzel je een weg door de uitdagingen en ontdek jouw kerstcadeau!</p>
+        <button id="start-escape">Begin Escaperoom</button>
+    </div>
+
     <div id="room-1" class="room">
-        <h1>Room 1: Match the Phrases</h1>
+        <h1>Kamer 1: Match de Zinnen</h1>
         <div class="game-area">
             <div class="phrases">
                 <p draggable="true" class="phrase" data-match="tree">Frohe Weihnachten</p>
@@ -20,40 +48,67 @@
                 <div class="object" id="beer">🍺</div>
             </div>
         </div>
-        <button id="to-room-2" class="hidden">Go to Room 2</button>
+        <button id="to-room-2" class="hidden">Ga naar Kamer 2</button>
     </div>
 
-    <div id="room-2" class="room hidden">
-        <h1>Room 2: Find the Numbers</h1>
+    <div id="room-2" class="room">
+        <h1>Kamer 2: Vind de Cijfers</h1>
         <div class="game-area">
             <div class="item" data-number="1">🍣</div>
             <div class="item" data-number="3">🍕</div>
             <div class="item" data-number="2025">🏯</div>
         </div>
-        <input type="text" id="lock-input" placeholder="Enter combination">
-        <button id="unlock-room-3" disabled>Unlock Room 3</button>
+        <input type="text" id="lock-input" placeholder="Voer de combinatie in">
+        <button id="unlock-room-3" disabled>Ontgrendel Kamer 3</button>
     </div>
 
-    <div id="room-3" class="room hidden">
-        <h1>Room 3: Find the City</h1>
+    <div id="room-3" class="room">
+        <h1>Kamer 3: Vind de Stad</h1>
         <div class="game-area">
-            <div id="city-outline">[Düsseldorf outline here]</div>
+            <div id="city-outline">[Düsseldorf outline hier]</div>
             <iframe
                 src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d12094.457587646955!2d6.7734567!3d51.2277411!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1"
                 width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
-        <input type="text" id="city-input" placeholder="Enter the city name">
-        <button id="finish-game" disabled>Finish Game</button>
+        <input type="text" id="city-input" placeholder="Voer de stadsnaam in">
+        <button id="finish-game" disabled>Voltooi Spel</button>
     </div>
 
-    <div id="end-screen" class="hidden">
-        <h1>Congratulations!</h1>
-        <p>You guessed it: Düsseldorf!</p>
+    <div id="end-screen" class="room">
+        <h1>Gefeliciteerd!</h1>
+        <p>Je hebt het geraden: Düsseldorf!</p>
         <div id="airbnb-info">
             <img src="airbnb.jpg" alt="Airbnb">
-            <p>Enjoy your stay and explore the beautiful city!</p>
+            <p>Geniet van je verblijf en ontdek de prachtige stad!</p>
         </div>
     </div>
+
+    <script>
+        const rooms = document.querySelectorAll('.room');
+        const body = document.body;
+
+        function showRoom(roomId, backgroundImage) {
+            rooms.forEach(room => room.classList.remove('active'));
+            document.getElementById(roomId).classList.add('active');
+            body.style.backgroundImage = `url('${backgroundImage}')`;
+        }
+
+        document.getElementById('start-escape').addEventListener('click', () => {
+            showRoom('room-1', 'Room1.jpg');
+        });
+
+        document.getElementById('to-room-2').addEventListener('click', () => {
+            showRoom('room-2', 'Room2.jpg');
+        });
+
+        document.getElementById('unlock-room-3').addEventListener('click', () => {
+            showRoom('room-3', 'Room3.jpg');
+        });
+
+        document.getElementById('finish-game').addEventListener('click', () => {
+            showRoom('end-screen', 'EndScreen.jpg');
+        });
+    </script>
 </body>
 </html>
