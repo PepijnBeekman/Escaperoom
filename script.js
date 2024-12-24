@@ -74,4 +74,9 @@ document.addEventListener("DOMContentLoaded", () => {
             room.style.opacity = "1";
         }
     });
+
+    // Ensure Room 1 starts with only the next button hidden
+    if (document.getElementById("room-1").classList.contains("active")) {
+        nextRoomButton.classList.add("hidden");
+    }
 });
