@@ -61,7 +61,11 @@ document.addEventListener("DOMContentLoaded", () => {
             target.classList.remove("hover");
 
             const expectedTarget = e.dataTransfer.getData("text/plain");
-            if (target.id === expectedTarget) {
+            const draggedElement = [...wordElements].find(
+                (word) => word.dataset.target === expectedTarget
+            );
+
+            if (target.id === expectedTarget && draggedElement) {
                 console.log(`Correct drop: ${target.id}`);
                 target.classList.add("correct");
 
@@ -74,6 +78,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     keyOutline.src = `images/key${currentLevel}.png`;
                     console.log(`Key leveled up to: ${currentLevel}`);
                 }
+
+                // Remove the dragged word from the list
+                draggedElement.style.display = "none";
 
                 const allCorrect = [...dropTargets].every((t) =>
                     t.classList.contains("correct")
@@ -93,7 +100,14 @@ document.addEventListener("DOMContentLoaded", () => {
     if (nextRoomButton) {
         nextRoomButton.addEventListener("click", () => {
             console.log("Next room button clicked. Transitioning to Room 2.");
-            showRoom("room-2");
+            const keyOutline = document.getElementById("key-outline");
+            const maxLevel = 3; // Replace with the number of key levels you have
+
+            if (keyOutline && parseInt(keyOutline.dataset.level) === maxLevel) {
+                showRoom("room-2");
+            } else {
+                alert("De sleutel is nog niet volledig geleveld!");
+            }
         });
     }
 
