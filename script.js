@@ -2,12 +2,6 @@
 
 document.addEventListener("DOMContentLoaded", () => {
     console.log("DOM fully loaded and initialized.");
-    console.log("Room 2 clickable areas initialized.");
-    console.log("Room 2 objects initialized.");
-
-    const objects = ["pizza", "sushi", "flag"];
-    const clickedObjects = new Set();
-
 
     // Function to handle room transitions
     function showRoom(roomId) {
@@ -119,7 +113,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Room 2 functionality
-    
+    const objects = ["pizza", "sushi", "flag"];
+    const clickedObjects = new Set();
+
     objects.forEach((objectId) => {
         const objectElement = document.getElementById(objectId);
 
@@ -133,14 +129,34 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Check if all objects are clicked
                 if (clickedObjects.size === objects.length) {
                     console.log("All objects clicked. Unlocking next step.");
-                    alert("Alle objecten zijn gevonden! Ga naar de volgende kamer.");
-                    document.getElementById("next-room-button").style.display = "block";
+                    document.getElementById("code-input-container").style.display = "block";
                 }
             });
         } else {
             console.error(`Object not found: ${objectId}`);
         }
     });
+
+    // Code input functionality
+    const codeInput = document.getElementById("code-input");
+    const submitCodeButton = document.getElementById("submit-code");
+    const validCode = "132024";
+    const alternateCodes = ["312024", "120243", "320241", "202431", "202413"];
+
+    if (submitCodeButton && codeInput) {
+        submitCodeButton.addEventListener("click", () => {
+            const enteredCode = codeInput.value.trim();
+
+            if (enteredCode === validCode) {
+                console.log("Correct code entered.");
+                document.getElementById("next-room-button").style.display = "block";
+            } else if (alternateCodes.includes(enteredCode)) {
+                alert("Probeer anders 132024 even.");
+            } else {
+                alert("Foutieve code. Probeer opnieuw.");
+            }
+        });
+    }
 
     // Make key clickable when fully leveled
     const keyOutline = document.getElementById("key-outline");
