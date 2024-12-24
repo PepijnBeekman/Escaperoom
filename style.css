@@ -73,12 +73,6 @@ body {
 }
 
 /* Room 1 */
-#room-1 #word-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-}
 
 #room-1 .word {
     margin: 5px;
@@ -144,7 +138,7 @@ body {
 
 /* Key outline scaling */
 #key-outline {
-    display: block;
+    display: none;
     margin: 20px auto;
     width: 50%; /* Scales to 50% of the container width */
     height: auto;

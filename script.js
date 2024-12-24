@@ -65,6 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.log(`Word correctly dropped on target: ${targetId}`);
                 keyProgress++;
                 keyOutline.src = keyImages[keyProgress];
+                keyOutline.style.display = "block"; // Ensure key is displayed
                 event.target.style.backgroundColor = "lightgreen"; // Feedback
 
                 // Remove matched word
@@ -115,4 +116,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Ensure Room 1 starts with only the hint text and next button hidden
     nextRoomButton.style.display = "none";
+    keyOutline.style.display = "none"; // Ensure key is hidden initially
 });
