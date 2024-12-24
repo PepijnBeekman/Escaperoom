@@ -146,9 +146,28 @@ body {
 #key-outline {
     display: block;
     margin: 20px auto;
-    width: 50%; /* 50% of the container width */
-    max-width: calc(50% - 20px); /* Account for padding and spacing */
+    width: 50%; /* Scales to 50% of the container width */
     height: auto;
+}
+
+/* Word container for 3x3 grid */
+#word-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    justify-items: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.word {
+    padding: 10px;
+    background-color: #f1c40f;
+    border: 1px solid #d35400;
+    border-radius: 5px;
+    text-align: center;
+    cursor: grab;
+    user-select: none;
 }
 
 

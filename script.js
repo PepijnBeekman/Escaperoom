@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 if (keyProgress === keyImages.length - 1) {
                     console.log("All targets matched. Showing next room button.");
-                    nextRoomButton.classList.remove("hidden");
+                    nextRoomButton.style.display = "block"; // Unhide the button
                 }
             } else {
                 console.log(`Word incorrectly dropped on target: ${targetId}`);
@@ -105,6 +105,14 @@ document.addEventListener("DOMContentLoaded", () => {
         room.style.transition = "opacity 0.5s ease-in-out";
     });
 
+    // Adjust key outline size based on image container
+    const imageContainer = document.getElementById("image-container");
+    const adjustKeyOutlineSize = () => {
+        keyOutline.style.width = `${imageContainer.offsetWidth / 2}px`;
+    };
+    window.addEventListener("resize", adjustKeyOutlineSize);
+    adjustKeyOutlineSize();
+
     // Ensure Room 1 starts with only the hint text and next button hidden
-    nextRoomButton.classList.add("hidden");
+    nextRoomButton.style.display = "none";
 });
