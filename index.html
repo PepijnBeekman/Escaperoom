@@ -67,11 +67,28 @@
     
     
 
-    <!-- Room 3 Placeholder -->
     <div id="room-3" class="room">
-        <h1>Kamer 3</h1>
-        <!-- Content to be added later -->
+        <div id="image-container">
+            <img id="room3-background" src="images/room3background.png" alt="Room 3 Background">
+        </div>
+        <div id="maps-container">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25190.353074303555!2d6.765472524659842!3d51.225401330835804!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b8c8b2a3a1f8bb%3A0x65be029e92db18f4!2sD%C3%BCsseldorf!5e0!3m2!1sen!2snl!4v1234567890123!5m2!1sen!2snl"
+                width="600"
+                height="450"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+        <div id="destination-container">
+            <label for="destination-input">Waar gaan we heen?</label>
+            <input type="text" id="destination-input" placeholder="Typ je bestemming">
+            <button id="go-to-destination">Ga naar de bestemming</button>
+        </div>
     </div>
+    
 
     <!-- End Screen Placeholder -->
     <div id="end-screen" class="room">

@@ -249,3 +249,45 @@ body {
 #submit-code:hover {
     background-color: #1e8449;
 }
+#maps-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+iframe {
+    border: none;
+}
+
+#destination-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#destination-container label {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+#destination-input {
+    padding: 10px;
+    font-size: 1rem;
+    width: 300px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#go-to-destination {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#go-to-destination:hover {
+    background-color: #1e8449;
+}
