@@ -39,6 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const dropTargets = document.querySelectorAll(".drop-target");
 
     wordElements.forEach((word) => {
+        word.setAttribute("draggable", "true"); // Ensure words are draggable
         word.addEventListener("dragstart", (e) => {
             e.dataTransfer.setData("text/plain", word.dataset.target || "");
             console.log(`Dragging: ${word.textContent}`);
