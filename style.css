@@ -184,7 +184,7 @@ body {
     left: 0;
 }
 
-#room-2 #image-container {
+#image-container {
     position: relative;
     width: 100%;
     max-width: 800px;
