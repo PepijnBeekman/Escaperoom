@@ -3,8 +3,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const body = document.body;
 
     function showRoom(roomId) {
+        console.log(`Showing room: ${roomId}`);
         rooms.forEach((room) => {
             if (!room.classList.contains("active")) {
+                console.log(`Hiding room: ${room.id}`);
                 room.style.opacity = "0";
                 setTimeout(() => {
                     room.style.display = "none";
@@ -17,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const newRoom = document.getElementById(roomId);
         newRoom.style.display = "flex";
         setTimeout(() => {
+            console.log(`Fading in room: ${roomId}`);
             newRoom.style.opacity = "1";
             newRoom.classList.add("active");
         }, 10);
@@ -24,6 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Intro page logic
     document.getElementById("start-escape").addEventListener("click", () => {
+        console.log("Start Escape Room clicked");
         showRoom("room-1");
     });
 
@@ -44,12 +48,14 @@ document.addEventListener("DOMContentLoaded", () => {
             const targetElement = document.getElementById(targetId);
 
             if (targetElement && !targetElement.classList.contains("completed")) {
+                console.log(`Word matched: ${word.textContent}`);
                 keyProgress++;
                 keyOutline.src = keyImages[keyProgress];
                 targetElement.style.backgroundColor = "lightgreen"; // Feedback
                 targetElement.classList.add("completed");
 
                 if (keyProgress === keyImages.length - 1) {
+                    console.log("All words matched. Showing next room button.");
                     nextRoomButton.classList.remove("hidden");
                 }
             }
@@ -57,18 +63,27 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     hintButton.addEventListener("click", () => {
+        console.log("Hint button clicked");
         hintText.classList.toggle("hidden");
     });
 
     nextRoomButton.addEventListener("click", () => {
+        console.log("Next room button clicked");
         showRoom("room-2");
     });
 
     // Initial setup to hide all rooms except the active one
     rooms.forEach((room) => {
-        room.style.opacity = "0";
+        if (!room.classList.contains("active")) {
+            console.log(`Initial hide: ${room.id}`);
+            room.style.opacity = "0";
+            room.style.display = "none";
+        } else {
+            console.log(`Initial show: ${room.id}`);
+            room.style.opacity = "1";
+            room.style.display = "flex";
+        }
         room.style.transition = "opacity 0.5s ease-in-out";
-        room.style.display = room.classList.contains("active") ? "flex" : "none";
     });
 
     // Ensure Room 1 starts with only the next button hidden
