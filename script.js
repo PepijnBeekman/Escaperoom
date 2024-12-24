@@ -171,7 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
-    
+
     // Room 3 functionality
     const destinationInput = document.getElementById("destination-input");
     const goToDestinationButton = document.getElementById("go-to-destination");
@@ -181,7 +181,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const destination = destinationInput.value.trim().toLowerCase();
             if (destination === "düsseldorf" || destination === "dusseldorf") {
                 console.log("Correct destination entered. Redirecting...");
-                window.location.href = "dusseldorf.html"; // Adjust to your Düsseldorf page path
+                window.location.href = "prize.html"; // Adjust to the prize webpage path
             } else {
                 alert("Probeer het nog eens. Tip: Het begint met een 'D'.");
             }
