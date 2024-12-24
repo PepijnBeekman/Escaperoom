@@ -184,11 +184,6 @@ body {
     left: 0;
 }
 
-#room-2 .object-overlay {
-    z-index: 1;
-    pointer-events: none; /* Prevent clicks on images */
-}
-
 #room-2 #image-container {
     position: relative;
     width: 100%;
