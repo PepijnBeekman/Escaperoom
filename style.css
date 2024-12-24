@@ -201,7 +201,7 @@ body {
 /* Remove redundant .click-area styles */
 #area-object1, #area-object2, #area-object3 {
     position: absolute;
-    z-index: 3;
+    z-index: 2;
     border: 1px dashed red; /* Debugging border */
     background-color: transparent;
     cursor: pointer;
