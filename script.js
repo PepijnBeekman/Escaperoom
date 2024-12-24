@@ -3,15 +3,30 @@ document.addEventListener("DOMContentLoaded", () => {
     const body = document.body;
 
     function showRoom(roomId) {
-        rooms.forEach((room) => room.classList.remove("active"));
-        document.getElementById(roomId).classList.add("active");
+        rooms.forEach((room) => {
+            if (!room.classList.contains("active")) {
+                room.style.opacity = "0";
+                setTimeout(() => {
+                    room.style.display = "none";
+                }, 500); // Matches the transition duration
+            } else {
+                room.classList.remove("active");
+            }
+        });
+
+        const newRoom = document.getElementById(roomId);
+        newRoom.style.display = "flex";
+        setTimeout(() => {
+            newRoom.style.opacity = "1";
+            newRoom.classList.add("active");
+        }, 10);
     }
 
     document.getElementById("start-escape").addEventListener("click", () => {
         showRoom("room-1");
     });
 
-    // Room 1 functionality
+    // Room-specific logic
     const keyImages = ["images/key0.png", "images/key1.png", "images/key2.png", "images/key3.png"];
     let keyProgress = 0;
     const keyOutline = document.getElementById("key-outline");
@@ -44,12 +59,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 event.target.style.backgroundColor = "lightgreen"; // Feedback
                 event.target.classList.add("completed");
 
-                // Check if the key is complete
                 if (keyProgress === keyImages.length - 1) {
                     nextRoomButton.classList.remove("hidden");
                 }
             } else {
-                event.target.style.backgroundColor = "red"; // Feedback for incorrect drop
+                event.target.style.backgroundColor = "red";
                 setTimeout(() => {
                     event.target.style.backgroundColor = "";
                 }, 1000);
@@ -63,5 +77,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     nextRoomButton.addEventListener("click", () => {
         showRoom("room-2");
+    });
+
+    // Initial setup
+    rooms.forEach((room) => {
+        room.style.opacity = "0";
+        room.style.transition = "opacity 0.5s ease-in-out";
+        if (!room.classList.contains("active")) {
+            room.style.display = "none";
+        } else {
+            room.style.opacity = "1";
+        }
     });
 });
