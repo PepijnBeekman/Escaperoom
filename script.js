@@ -76,6 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     currentLevel++;
                     keyOutline.dataset.level = currentLevel;
                     keyOutline.src = `images/key${currentLevel}.png`;
+                    keyOutline.style.cursor = "pointer"; // Make key clickable
                     console.log(`Key leveled up to: ${currentLevel}`);
                 }
 
@@ -146,4 +147,18 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error(`Clickable area not found: ${area.id}`);
         }
     });
+
+    // Make key clickable when fully leveled
+    const keyOutline = document.getElementById("key-outline");
+    if (keyOutline) {
+        keyOutline.addEventListener("click", () => {
+            const maxLevel = 3; // Replace with the number of key levels you have
+            if (parseInt(keyOutline.dataset.level) === maxLevel) {
+                console.log("Key clicked. Transitioning to Room 2.");
+                showRoom("room-2");
+            } else {
+                alert("De sleutel is nog niet volledig geleveld!");
+            }
+        });
+    }
 });
