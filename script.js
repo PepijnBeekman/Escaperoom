@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 10);
     }
 
+    // Intro page logic
     document.getElementById("start-escape").addEventListener("click", () => {
         showRoom("room-1");
     });
@@ -38,35 +39,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const words = document.querySelectorAll("#room-1 .word");
 
     words.forEach((word) => {
-        word.addEventListener("dragstart", (event) => {
-            event.dataTransfer.setData("text/plain", event.target.dataset.target);
-        });
-    });
+        word.addEventListener("click", () => {
+            const targetId = word.dataset.target;
+            const targetElement = document.getElementById(targetId);
 
-    dropTargets.forEach((target) => {
-        target.addEventListener("dragover", (event) => {
-            event.preventDefault();
-        });
-
-        target.addEventListener("drop", (event) => {
-            event.preventDefault();
-            const targetId = event.target.id;
-            const draggedTarget = event.dataTransfer.getData("text/plain");
-
-            if (targetId === draggedTarget) {
+            if (targetElement && !targetElement.classList.contains("completed")) {
                 keyProgress++;
                 keyOutline.src = keyImages[keyProgress];
-                event.target.style.backgroundColor = "lightgreen"; // Feedback
-                event.target.classList.add("completed");
+                targetElement.style.backgroundColor = "lightgreen"; // Feedback
+                targetElement.classList.add("completed");
 
                 if (keyProgress === keyImages.length - 1) {
                     nextRoomButton.classList.remove("hidden");
                 }
-            } else {
-                event.target.style.backgroundColor = "red";
-                setTimeout(() => {
-                    event.target.style.backgroundColor = "";
-                }, 1000);
             }
         });
     });

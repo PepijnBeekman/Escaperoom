@@ -4,31 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Escape Room</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Intro Room -->
     <div id="intro" class="room active">
-        <h1>Welkom bij de Kerst Escape Room!</h1>
-        <p>Je bent beland in een online escaperoom. Puzzel je een weg door de uitdagingen en ontdek jouw kerstcadeau!</p>
-        <button id="start-escape">Begin Escaperoom</button>
+        <div id="intro-content">
+            <h1>Welkom bij de Kerst Escape Room!</h1>
+            <p>Je bent beland in een online escaperoom. Puzzel je een weg door de uitdagingen en ontdek jouw kerstcadeau!</p>
+            <button id="start-escape">Begin Escaperoom</button>
+        </div>
     </div>
 
     <!-- Room 1 -->
     <div id="room-1" class="room">
         <div id="word-container">
-            <div draggable="true" class="word" data-language="German" data-target="tree-target">Tannenbaum</div>
-            <div draggable="true" class="word" data-language="French">Sapin</div>
-            <div draggable="true" class="word" data-language="Danish">Juletræ</div>
-            <div draggable="true" class="word" data-language="German" data-target="fireplace-target">Kamin</div>
-            <div draggable="true" class="word" data-language="French">Cheminée</div>
-            <div draggable="true" class="word" data-language="Danish">Pejs</div>
-            <div draggable="true" class="word" data-language="German" data-target="pot-target">Glühwein</div>
-            <div draggable="true" class="word" data-language="French">Vin Chaud</div>
-            <div draggable="true" class="word" data-language="Danish">Gløgg</div>
+            <p class="word" data-target="tree-target">Tannenbaum</p>
+            <p class="word">Sapin</p>
+            <p class="word">Juletræ</p>
+            <p class="word" data-target="fireplace-target">Kamin</p>
+            <p class="word">Cheminée</p>
+            <p class="word">Pejs</p>
+            <p class="word" data-target="pot-target">Glühwien</p>
+            <p class="word">Vin Chaud</p>
+            <p class="word">Gløgg</p>
         </div>
 
         <div id="image-container">
@@ -61,19 +62,5 @@
         <h1>Gefeliciteerd!</h1>
         <p>Je hebt het geraden: Düsseldorf!</p>
     </div>
-
-    <script>
-        const rooms = document.querySelectorAll(".room");
-        const body = document.body;
-
-        function showRoom(roomId) {
-            rooms.forEach((room) => room.classList.remove("active"));
-            document.getElementById(roomId).classList.add("active");
-        }
-
-        document.getElementById("start-escape").addEventListener("click", () => {
-            showRoom("room-1");
-        });
-    </script>
 </body>
 </html>

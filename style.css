@@ -6,9 +6,10 @@ body {
     justify-content: flex-start;
     align-items: center;
     min-height: 100vh;
-    background-color: #f8e8e8; /* Faint classy pink */
+    background-color: #f8e8e8; /* Classy pink background */
     overflow-y: auto;
     transition: background-image 0.5s ease-in-out;
+    font-family: 'Dancing Script', cursive;
 }
 
 /* Global room styles */
@@ -20,53 +21,75 @@ body {
     width: 100%;
     padding: 20px;
     box-sizing: border-box;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
 }
 
 .room.active {
     display: flex;
+    opacity: 1;
 }
 
 /* Intro Room */
 #intro {
     background-image: url('images/ChristmasBackground.jpg');
-    background-size: contain;
-    background-repeat: no-repeat;
+    background-size: cover;
     background-position: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
 }
 
-#intro h1,
-#intro p {
-    font-family: "Dancing Script", cursive;
+#intro-content h1, #intro-content p {
     color: white;
     text-shadow: 2px 2px 4px black;
+    margin: 10px;
 }
 
-#intro h1 {
+#intro-content h1 {
     font-size: 3rem;
-    margin-top: 20px;
 }
 
-#intro p {
+#intro-content p {
     font-size: 1.5rem;
 }
 
-#intro button {
+#intro-content button {
     margin-top: 20px;
     font-size: 1.5rem;
     padding: 10px 20px;
     background-color: #e74c3c;
-    color: #fff;
+    color: gold;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
-#intro button:hover {
+#intro-content button:hover {
     background-color: #c0392b;
 }
 
-/* Room 1 Specific */
+/* Room 1 */
+#room-1 #word-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#room-1 .word {
+    margin: 5px;
+    padding: 5px 10px;
+    background-color: #f1c40f;
+    border: 1px solid #d35400;
+    border-radius: 3px;
+    cursor: pointer;
+    user-select: none;
+}
+
 #room-1 #image-container {
     position: relative;
     width: 100%;
@@ -82,60 +105,23 @@ body {
     height: auto;
 }
 
-#room-1 #word-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-}
-
-#room-1 .word {
-    margin: 5px;
-    padding: 5px 10px;
-    background-color: #f1c40f;
-    border: 1px solid #d35400;
-    border-radius: 3px;
-    cursor: grab;
-    user-select: none;
-}
-
-/* Drop Targets */
 #room-1 .drop-target {
     position: absolute;
     background-color: rgba(255, 255, 255, 0.2); /* Highlight for testing */
     border: 1px dashed #000;
 }
 
-#room-1 #fireplace-target {
-    width: 35%;
-    height: 25%;
-    top: calc(65% - 12.5%);
-    left: calc(18% - 17.5%);
-}
-
-#room-1 #pot-target {
-    width: 15%;
-    height: 11%;
-    top: calc(85% - 5.5%);
-    left: calc(15% - 7.5%);
-}
-
-#room-1 #tree-target {
-    width: 22%;
-    height: 66%;
-    top: calc(50% - 33%);
-    left: calc(89% - 11%);
-}
-
 #room-1 #key-outline {
     margin: 20px 0;
 }
 
-#room-1 #hint-text {
-    display: none;
-    margin: 20px;
-    font-size: 1.2rem;
-    color: #333;
+#room-1 #hint-button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #c0392b;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 #room-1 #next-room-button {
@@ -148,7 +134,10 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
+}
+
+#room-1 #next-room-button.hidden {
+    display: none;
 }
 
 #room-1 #next-room-button:hover {
