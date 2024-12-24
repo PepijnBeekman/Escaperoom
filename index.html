@@ -12,47 +12,53 @@
             padding: 0;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             min-height: 100vh;
             background-color: #f8e8e8; /* Faint classy pink */
-            background-image: url('ChristmasBackground.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
             overflow-y: auto;
             transition: background-image 0.5s ease-in-out;
         }
+
         .room {
             display: none;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
             width: 100%;
             padding: 20px;
             box-sizing: border-box;
         }
         .room.active {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
         }
-        #intro h1 {
-            font-size: 3rem;
-            margin: 20px 0;
+
+        #intro {
+            background-image: url('ChristmasBackground.jpg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        #intro h1, #intro p {
             font-family: "Dancing Script", cursive;
             color: white;
             text-shadow: 2px 2px 4px black;
         }
+
+        #intro h1 {
+            font-size: 3rem;
+            margin-top: 20px;
+        }
+
         #intro p {
             font-size: 1.5rem;
-            margin: 10px 20px;
-            color: white;
-            text-shadow: 1px 1px 3px black;
         }
+
         #intro button {
+            margin-top: 20px;
             font-size: 1.5rem;
             padding: 10px 20px;
-            margin-top: 20px;
             background-color: #e74c3c;
             color: #fff;
             border: none;
@@ -60,21 +66,85 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
+
         #intro button:hover {
             background-color: #c0392b;
         }
 
-        /* Responsive styles for small devices */
+        /* Room 1 Specific */
+        #room-1 #image-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 20px 0;
+            background: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        #room-1 #image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        #room-1 #word-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        #room-1 .word {
+            margin: 5px;
+            padding: 5px 10px;
+            background-color: #f1c40f;
+            border: 1px solid #d35400;
+            border-radius: 3px;
+            cursor: grab;
+            user-select: none;
+        }
+
+        #room-1 #key-outline {
+            margin: 20px 0;
+        }
+
+        #room-1 .drop-target {
+            position: absolute;
+            width: 10%;
+            height: 10%;
+            background-color: rgba(255, 255, 255, 0.2); /* Highlight for testing */
+            border: 1px dashed #000;
+        }
+
+        #room-1 #tree-target {
+            top: 15%;
+            left: 25%;
+        }
+
+        #room-1 #fireplace-target {
+            top: 50%;
+            left: 50%;
+        }
+
+        #room-1 #pot-target {
+            top: 75%;
+            left: 35%;
+        }
+
+        /* Responsive Adjustments */
         @media (max-width: 600px) {
-            body {
-                background-size: contain;
+            #room-1 #image-container {
+                width: 90%;
             }
+
             #intro h1 {
                 font-size: 2.5rem;
             }
+
             #intro p {
                 font-size: 1.2rem;
             }
+
             #intro button {
                 font-size: 1.2rem;
                 padding: 8px 16px;
@@ -84,97 +154,70 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Intro Room -->
     <div id="intro" class="room active">
-        <h1>Welkom bij je eigen Kerst Escape Room!</h1>
-        <p>Hey lekker ding, ik ben weer creatief bezig geweest. Puzzel je een weg door de uitdagingen en ontdek jouw kerstcadeau!</p>
+        <h1>Welkom bij de Kerst Escape Room!</h1>
+        <p>Je bent beland in een online escaperoom. Puzzel je een weg door de uitdagingen en ontdek jouw kerstcadeau!</p>
         <button id="start-escape">Begin Escaperoom</button>
     </div>
 
-    <div id="room-1" class="room active">
-        <h1>Room 1: Match de Woorden</h1>
+    <!-- Room 1 -->
+    <div id="room-1" class="room">
+        <h1>Kamer 1: Match de Woorden</h1>
         <div id="word-container">
-            <p draggable="true" class="word" data-language="German" data-target="tree-target">Tannenbaum</p>
-            <p draggable="true" class="word" data-language="French" data-target="">Sapin</p>
-            <p draggable="true" class="word" data-language="Danish" data-target="">Juletræ</p>
-            <p draggable="true" class="word" data-language="German" data-target="fireplace-target">Feuerstelle</p>
-            <p draggable="true" class="word" data-language="French" data-target="">Cheminée</p>
-            <p draggable="true" class="word" data-language="Danish" data-target="">Pejs</p>
-            <p draggable="true" class="word" data-language="German" data-target="pot-target">Glühwein</p>
-            <p draggable="true" class="word" data-language="French" data-target="">Vin Chaud</p>
-            <p draggable="true" class="word" data-language="Danish" data-target="">Gløgg</p>
+            <div draggable="true" class="word" data-language="German" data-target="tree-target">Tannenbaum</div>
+            <div draggable="true" class="word" data-language="French">Sapin</div>
+            <div draggable="true" class="word" data-language="Danish">Juletræ</div>
+            <div draggable="true" class="word" data-language="German" data-target="fireplace-target">Kamin</div>
+            <div draggable="true" class="word" data-language="French">Cheminée</div>
+            <div draggable="true" class="word" data-language="Danish">Pejs</div>
+            <div draggable="true" class="word" data-language="German" data-target="pot-target">Glühwein</div>
+            <div draggable="true" class="word" data-language="French">Vin Chaud</div>
+            <div draggable="true" class="word" data-language="Danish">Gløgg</div>
         </div>
-    
+
         <div id="image-container">
-            <img id="background-image" src="Room1.jpg" alt="Room 1">
+            <img src="Room1.jpg" alt="Room 1">
             <div id="tree-target" class="drop-target"></div>
             <div id="fireplace-target" class="drop-target"></div>
             <div id="pot-target" class="drop-target"></div>
         </div>
-    
+
         <img id="key-outline" src="key0.jpg" alt="Key Outline">
         <button id="hint-button">Hint</button>
         <p id="hint-text" class="hidden">Sleep de juiste woorden naar de juiste plek</p>
         <button id="next-room-button" class="hidden">Ga naar Kamer 2</button>
     </div>
-    
 
+    <!-- Room 2 Placeholder -->
     <div id="room-2" class="room">
-        <h1>Kamer 2: Vind de Cijfers</h1>
-        <div class="game-area">
-            <div class="item" data-number="1">🍣</div>
-            <div class="item" data-number="3">🍕</div>
-            <div class="item" data-number="2025">🏯</div>
-        </div>
-        <input type="text" id="lock-input" placeholder="Voer de combinatie in">
-        <button id="unlock-room-3" disabled>Ontgrendel Kamer 3</button>
+        <h1>Kamer 2</h1>
+        <!-- Content to be added later -->
     </div>
 
+    <!-- Room 3 Placeholder -->
     <div id="room-3" class="room">
-        <h1>Kamer 3: Vind de Stad</h1>
-        <div class="game-area">
-            <div id="city-outline">[Düsseldorf outline hier]</div>
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d12094.457587646955!2d6.7734567!3d51.2277411!2m3!1f0!2f0!3f0!3m2!1i1024;2i768!4f13.1"
-                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-        <input type="text" id="city-input" placeholder="Voer de stadsnaam in">
-        <button id="finish-game" disabled>Voltooi Spel</button>
+        <h1>Kamer 3</h1>
+        <!-- Content to be added later -->
     </div>
 
+    <!-- End Screen Placeholder -->
     <div id="end-screen" class="room">
         <h1>Gefeliciteerd!</h1>
         <p>Je hebt het geraden: Düsseldorf!</p>
-        <div id="airbnb-info">
-            <img src="airbnb.jpg" alt="Airbnb">
-            <p>Geniet van je verblijf en ontdek de prachtige stad!</p>
-        </div>
     </div>
 
     <script>
-        const rooms = document.querySelectorAll('.room');
+        const rooms = document.querySelectorAll(".room");
         const body = document.body;
 
-        function showRoom(roomId, backgroundImage) {
-            rooms.forEach(room => room.classList.remove('active'));
-            document.getElementById(roomId).classList.add('active');
-            body.style.backgroundImage = `url('${backgroundImage}')`;
+        function showRoom(roomId) {
+            rooms.forEach((room) => room.classList.remove("active"));
+            document.getElementById(roomId).classList.add("active");
         }
 
-        document.getElementById('start-escape').addEventListener('click', () => {
-            showRoom('room-1', 'Room1.jpg');
-        });
-
-        document.getElementById('to-room-2').addEventListener('click', () => {
-            showRoom('room-2', 'Room2.jpg');
-        });
-
-        document.getElementById('unlock-room-3').addEventListener('click', () => {
-            showRoom('room-3', 'Room3.jpg');
-        });
-
-        document.getElementById('finish-game').addEventListener('click', () => {
-            showRoom('end-screen', 'EndScreen.jpg');
+        document.getElementById("start-escape").addEventListener("click", () => {
+            showRoom("room-1");
         });
     </script>
 </body>
