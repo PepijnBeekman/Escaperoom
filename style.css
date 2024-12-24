@@ -138,10 +138,12 @@ body {
 
 /* Key outline scaling */
 #key-outline {
-    display: none;
+    display: block;
     margin: 20px auto;
     width: 50%; /* Scales to 50% of the container width */
+    max-width: 300px; /* Ensures the key doesn’t get too large */
     height: auto;
+    cursor: default;
 }
 
 /* Word container for 3x3 grid */
