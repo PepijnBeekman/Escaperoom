@@ -175,15 +175,13 @@ body {
     border-radius: 5px;
     cursor: pointer;
 }
-
 #room-2 #image-container {
+    border: 1px solid blue; /* Debugging border */
     position: relative;
-    width: 100%; /* Match the width of the room */
-    max-width: 800px; /* Ensure the container doesn't shrink */
-    margin: 0 auto;
-    display: block; /* Ensures block alignment */
+    width: 100%;
+    max-width: 800px;
+    height: auto; /* Ensure height is proportional */
 }
-
 
 #room-2 img {
     position: absolute;
@@ -191,6 +189,12 @@ body {
     height: auto;
     top: 0;
     left: 0;
+}
+
+#room-2 #room2-background {
+    display: block;
+    width: 100%; /* Ensure the image fills the container width */
+    height: auto; /* Maintain aspect ratio */
 }
 
 #room-2 .object-overlay {
@@ -201,11 +205,13 @@ body {
 /* Remove redundant .click-area styles */
 #area-object1, #area-object2, #area-object3 {
     position: absolute;
+    transform: none; /* Remove centering transformations */
     z-index: 2;
     border: 1px dashed red; /* Debugging border */
     background-color: transparent;
     cursor: pointer;
 }
+
 
 #area-object1 {
     width: 17%;
