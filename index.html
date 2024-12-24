@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escape Room</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div id="room-1" class="room">
+        <h1>Room 1: Match the Phrases</h1>
+        <div class="game-area">
+            <div class="phrases">
+                <p draggable="true" class="phrase" data-match="tree">Frohe Weihnachten</p>
+                <p draggable="true" class="phrase" data-match="beer">Prost!</p>
+            </div>
+            <div class="objects">
+                <div class="object" id="tree">🎄</div>
+                <div class="object" id="beer">🍺</div>
+            </div>
+        </div>
+        <button id="to-room-2" class="hidden">Go to Room 2</button>
+    </div>
+
+    <div id="room-2" class="room hidden">
+        <h1>Room 2: Find the Numbers</h1>
+        <div class="game-area">
+            <div class="item" data-number="1">🍣</div>
+            <div class="item" data-number="3">🍕</div>
+            <div class="item" data-number="2025">🏯</div>
+        </div>
+        <input type="text" id="lock-input" placeholder="Enter combination">
+        <button id="unlock-room-3" disabled>Unlock Room 3</button>
+    </div>
+
+    <div id="room-3" class="room hidden">
+        <h1>Room 3: Find the City</h1>
+        <div class="game-area">
+            <div id="city-outline">[Düsseldorf outline here]</div>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d12094.457587646955!2d6.7734567!3d51.2277411!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <input type="text" id="city-input" placeholder="Enter the city name">
+        <button id="finish-game" disabled>Finish Game</button>
+    </div>
+
+    <div id="end-screen" class="hidden">
+        <h1>Congratulations!</h1>
+        <p>You guessed it: Düsseldorf!</p>
+        <div id="airbnb-info">
+            <img src="airbnb.jpg" alt="Airbnb">
+            <p>Enjoy your stay and explore the beautiful city!</p>
+        </div>
+    </div>
+</body>
+</html>

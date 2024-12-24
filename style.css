@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+.room {
+    display: none;
+    padding: 20px;
+    text-align: center;
+}
+
+.room.active {
+    display: block;
+}
+
+h1 {
+    color: #333;
+}
+
+.game-area {
+    margin: 20px auto;
+    max-width: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.phrases, .objects {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.object, .item {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.object:hover, .item:hover {
+    transform: scale(1.1);
+}
+
+.hidden {
+    display: none;
+}
+
