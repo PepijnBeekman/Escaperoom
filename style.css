@@ -175,23 +175,3 @@ body {
     border-radius: 5px;
     cursor: pointer;
 }
-
-#room-1 #next-room-button {
-    display: none;
-    margin-top: 20px;
-    font-size: 1.2rem;
-    padding: 10px 20px;
-    background-color: #27ae60;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-#room-1 #next-room-button.hidden {
-    display: none;
-}
-
-#room-1 #next-room-button:hover {
-    background-color: #1e8449;
-}
