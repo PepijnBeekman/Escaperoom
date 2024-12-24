@@ -1,6 +1,28 @@
 document.addEventListener("DOMContentLoaded", () => {
     const rooms = document.querySelectorAll(".room");
     const body = document.body;
+    const clickAreas = document.querySelectorAll(".click-area");
+
+    clickAreas.forEach((area) => {
+        area.addEventListener("click", () => {
+            const targetId = area.getAttribute("data-target");
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                targetElement.style.display = "none"; // Hide the overlay
+                area.style.display = "none"; // Disable the click area
+            }
+
+            // Check if all objects are hidden
+            const allHidden = [...document.querySelectorAll(".object-overlay")].every(
+                (obj) => obj.style.display === "none"
+            );
+
+            if (allHidden) {
+                alert("Alle objecten gevonden! De code is onthuld.");
+            }
+        });
+    });
 
     function showRoom(roomId) {
         console.log(`Showing room: ${roomId}`);
