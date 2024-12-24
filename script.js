@@ -1,6 +1,92 @@
+// JavaScript for the Escape Room
+
 document.addEventListener("DOMContentLoaded", () => {
-    const rooms = document.querySelectorAll(".room");
-    const body = document.body;
+    console.log("DOM fully loaded and initialized.");
+
+    // Function to handle room transitions
+    function showRoom(roomId) {
+        console.log(`Showing room: ${roomId}`);
+        const rooms = document.querySelectorAll(".room");
+        rooms.forEach((room) => {
+            if (room.id === roomId) {
+                console.log(`Activating room: ${roomId}`);
+                room.classList.add("active");
+                room.style.opacity = "1";
+                room.style.display = "flex";
+            } else {
+                console.log(`Hiding room: ${room.id}`);
+                room.classList.remove("active");
+                room.style.opacity = "0";
+                room.style.display = "none";
+            }
+        });
+    }
+
+    // Add event listener for the "Begin Escaperoom" button
+    const startButton = document.getElementById("start-escape");
+    if (startButton) {
+        console.log("Start button found. Adding click event listener.");
+        startButton.addEventListener("click", () => {
+            console.log("Start button clicked. Transitioning to Room 1.");
+            showRoom("room-1");
+        });
+    } else {
+        console.error("Start button (#start-escape) not found.");
+    }
+
+    // Room 1 functionality
+    const wordElements = document.querySelectorAll(".word");
+    const dropTargets = document.querySelectorAll(".drop-target");
+
+    wordElements.forEach((word) => {
+        word.addEventListener("dragstart", (e) => {
+            e.dataTransfer.setData("text/plain", word.dataset.target || "");
+            console.log(`Dragging: ${word.textContent}`);
+        });
+    });
+
+    dropTargets.forEach((target) => {
+        target.addEventListener("dragover", (e) => {
+            e.preventDefault();
+            target.classList.add("hover");
+        });
+
+        target.addEventListener("dragleave", () => {
+            target.classList.remove("hover");
+        });
+
+        target.addEventListener("drop", (e) => {
+            e.preventDefault();
+            target.classList.remove("hover");
+
+            const expectedTarget = e.dataTransfer.getData("text/plain");
+            if (target.id === expectedTarget) {
+                console.log(`Correct drop: ${target.id}`);
+                target.classList.add("correct");
+
+                const allCorrect = [...dropTargets].every((t) =>
+                    t.classList.contains("correct")
+                );
+
+                if (allCorrect) {
+                    console.log("All targets matched. Unlocking next room.");
+                    document.getElementById("next-room-button").style.display = "block";
+                }
+            } else {
+                console.log("Incorrect drop.");
+            }
+        });
+    });
+
+    const nextRoomButton = document.getElementById("next-room-button");
+    if (nextRoomButton) {
+        nextRoomButton.addEventListener("click", () => {
+            console.log("Next room button clicked. Transitioning to Room 2.");
+            showRoom("room-2");
+        });
+    }
+
+    // Room 2 functionality
     const clickableAreas = [
         { id: "area-object1", target: "object1" },
         { id: "area-object2", target: "object2" },
@@ -12,10 +98,13 @@ document.addEventListener("DOMContentLoaded", () => {
         const targetElement = document.getElementById(area.target);
 
         if (areaElement) {
+            console.log(`Binding click event to: ${area.id}`);
             areaElement.addEventListener("click", () => {
+                console.log(`Clicked: ${area.id}`);
                 if (targetElement) {
+                    console.log(`Hiding overlay: ${area.target}`);
                     targetElement.style.display = "none"; // Hide the overlay
-                    areaElement.style.display = "none"; // Disable the area
+                    areaElement.style.display = "none"; // Hide the click area
 
                     // Check if all overlays are hidden
                     const allHidden = [...document.querySelectorAll(".object-overlay")].every(
@@ -23,125 +112,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     );
 
                     if (allHidden) {
+                        console.log("All overlays are hidden. Revealing the code.");
                         alert("Alle objecten gevonden! De code is onthuld.");
                     }
                 }
             });
-        }
-    });
-    
-    if (areaElement) {
-        console.log(`Binding click to ${area.id}`);
-        areaElement.addEventListener("click", () => {
-            console.log(`Clicked: ${area.id}`);
-            if (targetElement) {
-                console.log(`Hiding: ${area.target}`);
-            }
-        });
-    }
-    
-    function showRoom(roomId) {
-        console.log(`Showing room: ${roomId}`);
-        rooms.forEach((room) => {
-            if (room.id !== roomId) {
-                console.log(`Hiding room: ${room.id}`);
-                room.classList.remove("active");
-                room.style.opacity = "0";
-                setTimeout(() => {
-                    room.style.display = "none";
-                }, 500); // Matches the transition duration
-            } else {
-                console.log(`Activating room: ${room.id}`);
-                room.classList.add("active");
-                room.style.display = "flex";
-                setTimeout(() => {
-                    room.style.opacity = "1";
-                }, 10);
-            }
-        });
-    }
-
-    // Intro page logic
-    const startEscapeButton = document.getElementById("start-escape");
-    startEscapeButton.addEventListener("click", (event) => {
-        console.log("Start Escape Room clicked");
-        event.target.disabled = true; // Disable button after first click
-        showRoom("room-1");
-    });
-
-    // Room-specific logic
-    const keyImages = ["images/key0.png", "images/key1.png", "images/key2.png", "images/key3.png"];
-    let keyProgress = 0;
-    const keyOutline = document.getElementById("key-outline");
-    const hintButton = document.getElementById("hint-button");
-    const hintText = "Sleep de juiste woorden naar de juiste plek";
-
-    const dropTargets = document.querySelectorAll("#room-1 .drop-target");
-    const words = document.querySelectorAll("#room-1 .word");
-
-    // Ensure words are draggable
-    words.forEach((word) => {
-        word.setAttribute("draggable", "true"); // Make words draggable
-        word.addEventListener("dragstart", (event) => {
-            event.dataTransfer.setData("text/plain", word.dataset.target);
-            console.log(`Dragging word: ${word.textContent}`);
-        });
-    });
-
-    dropTargets.forEach((target) => {
-        target.addEventListener("dragover", (event) => {
-            event.preventDefault();
-        });
-
-        target.addEventListener("drop", (event) => {
-            event.preventDefault();
-            const targetId = event.target.id;
-            const draggedTarget = event.dataTransfer.getData("text/plain");
-
-            if (targetId === draggedTarget) {
-                console.log(`Word correctly dropped on target: ${targetId}`);
-                keyProgress++;
-                keyOutline.src = keyImages[keyProgress];
-                keyOutline.style.display = "block"; // Ensure key is displayed
-                event.target.style.backgroundColor = "lightgreen"; // Feedback
-
-                // Remove matched word
-                const word = document.querySelector(`.word[data-target='${draggedTarget}']`);
-                if (word) word.remove();
-
-                if (keyProgress === keyImages.length - 1) {
-                    console.log("Key is fully revealed. Ready to load Room 2.");
-                    keyOutline.style.cursor = "pointer"; // Indicate interactivity
-                    keyOutline.addEventListener("click", () => {
-                        showRoom("room-2");
-                    }, { once: true }); // Ensure Room 2 only loads once on click
-                }
-            } else {
-                console.log(`Word incorrectly dropped on target: ${targetId}`);
-            }
-        });
-    });
-
-    hintButton.addEventListener("click", () => {
-        console.log("Hint button clicked");
-        alert(hintText); // Show hint text as a browser alert
-    });
-
-    // Initial setup to hide all rooms except the active one
-    rooms.forEach((room) => {
-        if (!room.classList.contains("active")) {
-            console.log(`Initial hide: ${room.id}`);
-            room.style.opacity = "0";
-            room.style.display = "none";
         } else {
-            console.log(`Initial show: ${room.id}`);
-            room.style.opacity = "1";
-            room.style.display = "flex";
+            console.error(`Clickable area not found: ${area.id}`);
         }
-        room.style.transition = "opacity 0.5s ease-in-out";
     });
-
-    // Ensure key0.png is displayed initially
-    keyOutline.src = keyImages[0];
-    keyOutline.style.display = "block";
 });
