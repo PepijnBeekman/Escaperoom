@@ -1,30 +1,45 @@
 document.addEventListener("DOMContentLoaded", () => {
     const rooms = document.querySelectorAll(".room");
     const body = document.body;
-    const clickAreas = document.querySelectorAll(".click-area");
+    const clickableAreas = [
+        { id: "area-object1", target: "object1" },
+        { id: "area-object2", target: "object2" },
+        { id: "area-object3", target: "object3" },
+    ];
 
-    clickAreas.forEach((area) => {
-        area.addEventListener("click", () => {
-            const targetId = area.getAttribute("data-target");
-            const targetElement = document.getElementById(targetId);
+    clickableAreas.forEach((area) => {
+        const areaElement = document.getElementById(area.id);
+        const targetElement = document.getElementById(area.target);
 
+        if (areaElement) {
+            areaElement.addEventListener("click", () => {
+                if (targetElement) {
+                    targetElement.style.display = "none"; // Hide the overlay
+                    areaElement.style.display = "none"; // Disable the area
+
+                    // Check if all overlays are hidden
+                    const allHidden = [...document.querySelectorAll(".object-overlay")].every(
+                        (obj) => obj.style.display === "none"
+                    );
+
+                    if (allHidden) {
+                        alert("Alle objecten gevonden! De code is onthuld.");
+                    }
+                }
+            });
+        }
+    });
+    
+    if (areaElement) {
+        console.log(`Binding click to ${area.id}`);
+        areaElement.addEventListener("click", () => {
+            console.log(`Clicked: ${area.id}`);
             if (targetElement) {
-                targetElement.style.display = "none"; // Hide the overlay
-                area.style.display = "none"; // Hide the click area
-            }
-
-            // Check if all overlays are hidden
-            const allHidden = [...document.querySelectorAll(".object-overlay")].every(
-                (obj) => obj.style.display === "none"
-            );
-
-            if (allHidden) {
-                alert("Alle objecten gevonden! De code is onthuld.");
+                console.log(`Hiding: ${area.target}`);
             }
         });
-    });
-
-
+    }
+    
     function showRoom(roomId) {
         console.log(`Showing room: ${roomId}`);
         rooms.forEach((room) => {

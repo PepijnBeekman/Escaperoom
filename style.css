@@ -175,12 +175,15 @@ body {
     border-radius: 5px;
     cursor: pointer;
 }
+
 #room-2 #image-container {
     position: relative;
-    width: 100%;
-    max-width: 800px;
+    width: 100%; /* Match the width of the room */
+    max-width: 800px; /* Ensure the container doesn't shrink */
     margin: 0 auto;
+    display: block; /* Ensures block alignment */
 }
+
 
 #room-2 img {
     position: absolute;
@@ -195,46 +198,34 @@ body {
     pointer-events: none; /* Prevent clicks on images */
 }
 
-/* Target styles for Room 2 */
-#area-object1 {
+/* Remove redundant .click-area styles */
+#area-object1, #area-object2, #area-object3 {
     position: absolute;
+    z-index: 2;
+    border: 1px dashed red; /* Debugging border */
+    background-color: transparent;
+    cursor: pointer;
+}
+
+#area-object1 {
     width: 17%;
     height: 5%;
     left: calc(85% - 8.5%);
     top: calc(42% - 2.5%);
-    border: 1px dashed red; /* Debugging border */
-    background-color: transparent;
-    z-index: 2;
 }
 
 #area-object2 {
-    position: absolute;
     width: 22%;
     height: 11%;
     left: calc(35% - 11%);
     top: calc(68% - 5.5%);
-    border: 1px dashed red; /* Debugging border */
-    background-color: transparent;
-    z-index: 2;
 }
 
 #area-object3 {
-    position: absolute;
     width: 20%;
     height: 13%;
     left: calc(67% - 10%);
     top: calc(68% - 6.5%);
-    border: 1px dashed red; /* Debugging border */
-    background-color: transparent;
-    z-index: 2;
 }
 
-#room-2 .click-area {
-    position: absolute;
-    cursor: pointer;
-    z-index: 2;
-    border: 1px solid red; /* Debugging: Thin outline for regions */
-    background-color: transparent; /* Make sure background is fully transparent */
-    transform: translate(-50%, -50%); /* Center positioning */
-}
 
