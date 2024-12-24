@@ -16,7 +16,8 @@
             align-items: center;
             min-height: 100vh;
             background-color: #f8e8e8; /* Faint classy pink */
-            background-size: contain;
+            background-image: url('ChristmasBackground.jpg');
+            background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
             overflow-y: auto;
@@ -35,18 +36,17 @@
             align-items: center;
             text-align: center;
         }
-        #intro {
-            background-image: url('ChristmasBackground.jpg');
-        }
         #intro h1 {
             font-size: 3rem;
             margin: 20px 0;
             font-family: "Dancing Script", cursive;
+            color: white;
             text-shadow: 2px 2px 4px black;
         }
         #intro p {
             font-size: 1.5rem;
             margin: 10px 20px;
+            color: white;
             text-shadow: 1px 1px 3px black;
         }
         #intro button {
@@ -67,7 +67,7 @@
         /* Responsive styles for small devices */
         @media (max-width: 600px) {
             body {
-                background-size: cover;
+                background-size: contain;
             }
             #intro h1 {
                 font-size: 2.5rem;
