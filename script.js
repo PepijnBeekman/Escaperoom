@@ -43,21 +43,38 @@ document.addEventListener("DOMContentLoaded", () => {
     const words = document.querySelectorAll("#room-1 .word");
 
     words.forEach((word) => {
-        word.addEventListener("click", () => {
-            const targetId = word.dataset.target;
-            const targetElement = document.getElementById(targetId);
+        word.addEventListener("dragstart", (event) => {
+            event.dataTransfer.setData("text/plain", word.dataset.target);
+            console.log(`Dragging word: ${word.textContent}`);
+        });
+    });
 
-            if (targetElement && !targetElement.classList.contains("completed")) {
-                console.log(`Word matched: ${word.textContent}`);
+    dropTargets.forEach((target) => {
+        target.addEventListener("dragover", (event) => {
+            event.preventDefault();
+        });
+
+        target.addEventListener("drop", (event) => {
+            event.preventDefault();
+            const targetId = event.target.id;
+            const draggedTarget = event.dataTransfer.getData("text/plain");
+
+            if (targetId === draggedTarget) {
+                console.log(`Word correctly dropped on target: ${targetId}`);
                 keyProgress++;
                 keyOutline.src = keyImages[keyProgress];
-                targetElement.style.backgroundColor = "lightgreen"; // Feedback
-                targetElement.classList.add("completed");
+                event.target.style.backgroundColor = "lightgreen"; // Feedback
+
+                // Remove matched word
+                const word = document.querySelector(`.word[data-target='${draggedTarget}']`);
+                if (word) word.remove();
 
                 if (keyProgress === keyImages.length - 1) {
-                    console.log("All words matched. Showing next room button.");
+                    console.log("All targets matched. Showing next room button.");
                     nextRoomButton.classList.remove("hidden");
                 }
+            } else {
+                console.log(`Word incorrectly dropped on target: ${targetId}`);
             }
         });
     });
@@ -86,8 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
         room.style.transition = "opacity 0.5s ease-in-out";
     });
 
-    // Ensure Room 1 starts with only the next button hidden
-    if (document.getElementById("room-1").classList.contains("active")) {
-        nextRoomButton.classList.add("hidden");
-    }
+    // Ensure Room 1 starts with only the hint text and next button hidden
+    hintText.classList.add("hidden");
+    nextRoomButton.classList.add("hidden");
 });

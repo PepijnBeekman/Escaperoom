@@ -111,6 +111,38 @@ body {
     border: 1px dashed #000;
 }
 
+/* Target styles */
+#fireplace-target {
+    position: absolute;
+    width: 35%;
+    height: 25%;
+    left: calc(18% - 17.5%);
+    top: calc(65% - 12.5%);
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px dashed #000;
+}
+
+#pot-target {
+    position: absolute;
+    width: 15%;
+    height: 11%;
+    left: calc(15% - 7.5%);
+    top: calc(85% - 5.5%);
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px dashed #000;
+}
+
+#tree-target {
+    position: absolute;
+    width: 22%;
+    height: 66%;
+    left: calc(89% - 11%);
+    top: calc(50% - 33%);
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px dashed #000;
+}
+
+
 #room-1 #key-outline {
     margin: 20px 0;
 }
