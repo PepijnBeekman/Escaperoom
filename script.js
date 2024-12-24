@@ -148,8 +148,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const enteredCode = codeInput.value.trim();
 
             if (enteredCode === validCode) {
-                console.log("Correct code entered.");
-                document.getElementById("next-room-button").style.display = "block";
+                console.log("Correct code entered. Transitioning to Room 3.");
+                showRoom("room-3");
             } else if (alternateCodes.includes(enteredCode)) {
                 alert("Probeer anders 132024 even.");
             } else {
