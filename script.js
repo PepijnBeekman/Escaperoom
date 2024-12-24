@@ -3,7 +3,12 @@
 document.addEventListener("DOMContentLoaded", () => {
     console.log("DOM fully loaded and initialized.");
     console.log("Room 2 clickable areas initialized.");
-    
+    console.log("Room 2 objects initialized.");
+
+    const objects = ["pizza", "sushi", "flag"];
+    const clickedObjects = new Set();
+
+
     // Function to handle room transitions
     function showRoom(roomId) {
         console.log(`Showing room: ${roomId}`);
@@ -114,38 +119,26 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Room 2 functionality
-    const clickableAreas = [
-        { id: "area-object1", target: "object1" },
-        { id: "area-object2", target: "object2" },
-        { id: "area-object3", target: "object3" },
-    ];
+    
+    objects.forEach((objectId) => {
+        const objectElement = document.getElementById(objectId);
 
-    clickableAreas.forEach((area) => {
-        const areaElement = document.getElementById(area.id);
-        const targetElement = document.getElementById(area.target);
+        if (objectElement) {
+            console.log(`Binding click event to: ${objectId}`);
+            objectElement.addEventListener("click", () => {
+                console.log(`Clicked: ${objectId}`);
+                objectElement.style.display = "none"; // Hide the object
+                clickedObjects.add(objectId);
 
-        if (areaElement) {
-            console.log(`Binding click event to: ${area.id}`);
-            areaElement.addEventListener("click", () => {
-                console.log(`Clicked: ${area.id}`);
-                if (targetElement) {
-                    console.log(`Hiding overlay: ${area.target}`);
-                    targetElement.style.display = "none"; // Hide the overlay
-                    areaElement.style.display = "none"; // Hide the click area
-
-                    // Check if all overlays are hidden
-                    const allHidden = [...document.querySelectorAll(".object-overlay")].every(
-                        (obj) => obj.style.display === "none"
-                    );
-
-                    if (allHidden) {
-                        console.log("All overlays are hidden. Revealing the code.");
-                        alert("Alle objecten gevonden! De code is onthuld.");
-                    }
+                // Check if all objects are clicked
+                if (clickedObjects.size === objects.length) {
+                    console.log("All objects clicked. Unlocking next step.");
+                    alert("Alle objecten zijn gevonden! Ga naar de volgende kamer.");
+                    document.getElementById("next-room-button").style.display = "block";
                 }
             });
         } else {
-            console.error(`Clickable area not found: ${area.id}`);
+            console.error(`Object not found: ${objectId}`);
         }
     });
 

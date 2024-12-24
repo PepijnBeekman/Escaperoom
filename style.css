@@ -186,36 +186,38 @@ body {
 
 #image-container {
     position: relative;
-    width: 100%;
-    max-width: 800px;
+    width: 100%; /* Make the container scalable */
+    max-width: 800px; /* Ensure it doesn't exceed the image size */
+    height: auto; /* Maintain aspect ratio */
     margin: 0 auto;
 }
 
 #room2-background {
     width: 100%;
     height: auto;
+    display: block; /* Ensure proper scaling */
 }
 
 .object {
-    position: absolute;
+    position: absolute; /* Position objects relative to the container */
     cursor: pointer;
 }
 
-/* Position each object */
+/* Specific positions for each object */
 #pizza {
-    width: 15%; /* Adjust to match the pizza size */
-    left: 20%; /* Adjust to align with the pizza in the background */
-    top: 45%; /* Adjust to align with the pizza in the background */
+    width: 15%; /* Adjust to fit the pizza size */
+    left: 20%; /* Percentage of container width */
+    top: 45%; /* Percentage of container height */
 }
 
 #sushi {
-    width: 18%; /* Adjust to match the sushi size */
-    left: 60%; /* Adjust to align with the sushi in the background */
-    top: 50%; /* Adjust to align with the sushi in the background */
+    width: 18%;
+    left: 60%;
+    top: 50%;
 }
 
 #flag {
-    width: 10%; /* Adjust to match the flag size */
-    left: 85%; /* Adjust to align with the flag in the background */
-    top: 30%; /* Adjust to align with the flag in the background */
+    width: 10%;
+    left: 85%;
+    top: 30%;
 }
