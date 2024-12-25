@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Room 1: Drag and Drop Functionality
     const wordElements = document.querySelectorAll(".word");
     const dropTargets = document.querySelectorAll(".drop-target");
+    let successfulDrops = 0; // Track the number of successful drops
 
     wordElements.forEach((word) => {
         word.setAttribute("draggable", "true");
@@ -52,24 +53,26 @@ document.addEventListener("DOMContentLoaded", () => {
             if (target.id === expectedTarget && draggedElement) {
                 target.classList.add("correct");
                 draggedElement.style.display = "none";
+                successfulDrops++;
+                console.log(`Successful drops: ${successfulDrops}`);
 
-                const allCorrect = [...dropTargets].every((t) => t.classList.contains("correct"));
-                if (allCorrect) {
-                    console.log("All targets matched. Unlocking next room and updating key.");
-                    updateKeyOutline(); // Level up the key
+                updateKeyOutline(successfulDrops);
+
+                if (successfulDrops === dropTargets.length) {
+                    console.log("All targets matched. Unlocking next room.");
                     document.getElementById("next-room-button").style.display = "block";
                 }
+            } else {
+                console.log("Incorrect drop.");
             }
         });
     });
 
-    let keyLevel = 0; // Initialize key progression
-    function updateKeyOutline() {
-        keyLevel++;
+    function updateKeyOutline(level) {
         const keyOutline = document.getElementById("key-outline");
         if (keyOutline) {
-            keyOutline.src = `images/key${keyLevel}.png`;
-            console.log(`Key updated to level: ${keyLevel}`);
+            keyOutline.src = `images/key${level}.png`;
+            console.log(`Key updated to level: ${level}`);
         }
     }
 
