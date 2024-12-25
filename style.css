@@ -298,6 +298,31 @@ iframe {
     font-family: 'Arial', sans-serif;
 }
 
+/* Prize Container Styling */
+#prize-container {
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Headings */
+.main-heading {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #e74c3c;
+    font-family: 'Playfair Display', serif;
+}
+
+.section-heading {
+    font-size: 1.8rem;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    font-family: 'Dancing Script', cursive;
+}
+
+/* Image Wrappers */
 #dusseldorf-images, #airbnb-images {
     display: flex;
     flex-wrap: wrap;
@@ -311,8 +336,14 @@ iframe {
     height: auto;
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
 
+#dusseldorf-images a, #airbnb-images a {
+    text-decoration: none;
+}
+
+/* Links Styling */
 #links-container ul {
     list-style-type: none;
     padding: 0;
