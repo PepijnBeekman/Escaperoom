@@ -9,40 +9,25 @@ document.addEventListener("DOMContentLoaded", () => {
         const rooms = document.querySelectorAll(".room");
         rooms.forEach((room) => {
             if (room.id === roomId) {
-                console.log(`Activating room: ${roomId}`);
                 room.classList.add("active");
-                room.style.opacity = "1";
                 room.style.display = "flex";
+                room.style.opacity = "1";
             } else {
-                console.log(`Hiding room: ${room.id}`);
                 room.classList.remove("active");
-                room.style.opacity = "0";
                 room.style.display = "none";
+                room.style.opacity = "0";
             }
         });
     }
 
-    // Add event listener for the "Begin Escaperoom" button
-    const startButton = document.getElementById("start-escape");
-    if (startButton) {
-        console.log("Start button found. Adding click event listener.");
-        startButton.addEventListener("click", () => {
-            console.log("Start button clicked. Transitioning to Room 1.");
-            showRoom("room-1");
-        });
-    } else {
-        console.error("Start button (#start-escape) not found.");
-    }
-
-    // Room 1 functionality
+    // Room 1: Drag and Drop Functionality
     const wordElements = document.querySelectorAll(".word");
     const dropTargets = document.querySelectorAll(".drop-target");
 
     wordElements.forEach((word) => {
-        word.setAttribute("draggable", "true"); // Ensure words are draggable
+        word.setAttribute("draggable", "true");
         word.addEventListener("dragstart", (e) => {
             e.dataTransfer.setData("text/plain", word.dataset.target || "");
-            console.log(`Dragging: ${word.textContent}`);
         });
     });
 
@@ -61,58 +46,39 @@ document.addEventListener("DOMContentLoaded", () => {
             target.classList.remove("hover");
 
             const expectedTarget = e.dataTransfer.getData("text/plain");
-            const draggedElement = [...wordElements].find(
-                (word) => word.dataset.target === expectedTarget
-            );
+            const draggedElement = [...wordElements].find((word) => word.dataset.target === expectedTarget);
 
             if (target.id === expectedTarget && draggedElement) {
-                console.log(`Correct drop: ${target.id}`);
                 target.classList.add("correct");
-
-                // Update key level
-                const keyOutline = document.getElementById("key-outline");
-                if (keyOutline) {
-                    let currentLevel = parseInt(keyOutline.dataset.level || "0");
-                    currentLevel++;
-                    keyOutline.dataset.level = currentLevel;
-                    keyOutline.src = `images/key${currentLevel}.png`;
-                    keyOutline.style.cursor = "pointer"; // Make key clickable
-                    console.log(`Key leveled up to: ${currentLevel}`);
-                }
-
-                // Remove the dragged word from the list
                 draggedElement.style.display = "none";
 
-                const allCorrect = [...dropTargets].every((t) =>
-                    t.classList.contains("correct")
-                );
-
+                const allCorrect = [...dropTargets].every((t) => t.classList.contains("correct"));
                 if (allCorrect) {
-                    console.log("All targets matched. Unlocking next room.");
+                    updateKeyOutline();
                     document.getElementById("next-room-button").style.display = "block";
                 }
-            } else {
-                console.log("Incorrect drop.");
             }
         });
     });
 
-    const nextRoomButton = document.getElementById("next-room-button");
-    if (nextRoomButton) {
-        nextRoomButton.addEventListener("click", () => {
-            console.log("Next room button clicked. Transitioning to Room 2.");
-            const keyOutline = document.getElementById("key-outline");
-            const maxLevel = 3; // Replace with the number of key levels you have
+    let keyLevel = 0;
+    function updateKeyOutline() {
+        keyLevel++;
+        const keyOutline = document.getElementById("key-outline");
+        if (keyOutline) {
+            keyOutline.src = `images/key${keyLevel}.png`;
+        }
+    }
 
-            if (keyOutline && parseInt(keyOutline.dataset.level) === maxLevel) {
-                showRoom("room-2");
-            } else {
-                alert("De sleutel is nog niet volledig geleveld!");
-            }
+    // Room 1 Hint Button
+    const hintButton = document.getElementById("hint-button");
+    if (hintButton) {
+        hintButton.addEventListener("click", () => {
+            alert("Probeer te kijken naar de woorden en de objecten in de kamer.");
         });
     }
 
-    // Room 2 functionality
+    // Room 2: Clickable Objects and Code Validation
     const objects = ["pizza", "sushi", "flag"];
     const clickedObjects = new Set();
 
@@ -120,24 +86,17 @@ document.addEventListener("DOMContentLoaded", () => {
         const objectElement = document.getElementById(objectId);
 
         if (objectElement) {
-            console.log(`Binding click event to: ${objectId}`);
             objectElement.addEventListener("click", () => {
-                console.log(`Clicked: ${objectId}`);
-                objectElement.style.display = "none"; // Hide the object
+                objectElement.style.display = "none";
                 clickedObjects.add(objectId);
 
-                // Check if all objects are clicked
                 if (clickedObjects.size === objects.length) {
-                    console.log("All objects clicked. Unlocking next step.");
                     document.getElementById("code-input-container").style.display = "block";
                 }
             });
-        } else {
-            console.error(`Object not found: ${objectId}`);
         }
     });
 
-    // Code input functionality
     const codeInput = document.getElementById("code-input");
     const submitCodeButton = document.getElementById("submit-code");
     const validCode = "132024";
@@ -148,7 +107,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const enteredCode = codeInput.value.trim();
 
             if (enteredCode === validCode) {
-                console.log("Correct code entered. Transitioning to Room 3.");
                 showRoom("room-3");
             } else if (alternateCodes.includes(enteredCode)) {
                 alert("Probeer anders 132024 even.");
@@ -158,34 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Make key clickable when fully leveled
-    const keyOutline = document.getElementById("key-outline");
-    if (keyOutline) {
-        keyOutline.addEventListener("click", () => {
-            const maxLevel = 3; // Replace with the number of key levels you have
-            if (parseInt(keyOutline.dataset.level) === maxLevel) {
-                console.log("Key clicked. Transitioning to Room 2.");
-                showRoom("room-2");
-            } else {
-                alert("De sleutel is nog niet volledig geleveld!");
-            }
-        });
-    }
- 
-
-  // Add event listener for the "Begin Escaperoom" button
-    const startButton = document.getElementById("start-escape");
-    if (startButton) {
-        console.log("Start button found. Adding click event listener.");
-        startButton.addEventListener("click", () => {
-            console.log("Start button clicked. Transitioning to Room 3.");
-            showRoom("room-3"); // Ensure `showRoom` is defined elsewhere
-        });
-    } else {
-        console.error("Start button (#start-escape) not found in the DOM.");
-    }
-
-    // Room 3 functionality
+    // Room 3: Destination Input and Redirection
     const destinationInput = document.getElementById("destination-input");
     const goToDestinationButton = document.getElementById("go-to-destination");
 
@@ -193,11 +124,18 @@ document.addEventListener("DOMContentLoaded", () => {
         goToDestinationButton.addEventListener("click", () => {
             const destination = destinationInput.value.trim().toLowerCase();
             if (destination === "düsseldorf" || destination === "dusseldorf") {
-                console.log("Correct destination entered. Redirecting...");
-                window.location.href = "prize.html"; // Redirect to the prize page
+                window.location.href = "prize.html";
             } else {
                 alert("Probeer het nog eens. Tip: Het begint met een 'D'.");
             }
+        });
+    }
+
+    // Start Button for Intro Room
+    const startButton = document.getElementById("start-escape");
+    if (startButton) {
+        startButton.addEventListener("click", () => {
+            showRoom("room-1");
         });
     }
 });
