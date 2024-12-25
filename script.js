@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Room 1: Drag and Drop Functionality
     const wordElements = document.querySelectorAll(".word");
     const dropTargets = document.querySelectorAll(".drop-target");
-    let successfulDrops = 0; // Track the number of successful drops
+    let successfulDrops = 0;
 
     wordElements.forEach((word) => {
         word.setAttribute("draggable", "true");
@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 successfulDrops++;
                 console.log(`Successful drops: ${successfulDrops}`);
 
-                updateKeyOutline(successfulDrops); // Level up the key
+                updateKeyOutline(successfulDrops);
 
                 if (successfulDrops === dropTargets.length) {
                     console.log("All targets matched. Key is now clickable.");
@@ -94,6 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("Probeer te kijken naar de woorden en de objecten in de kamer.");
         });
     }
+
 
     // Room 2: Clickable Objects and Code Validation
     const objects = ["pizza", "sushi", "flag"];
