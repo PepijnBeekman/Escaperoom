@@ -431,6 +431,22 @@ body {
     font-size: 1.5rem;
 }
 
+
+/* Image Sections */
+#dusseldorf-images img, #airbnb-images img {
+    width: 100%; /* Full width for vertical stacking */
+    max-width: 300px;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+#dusseldorf-images img:hover, #airbnb-images img:hover {
+    transform: scale(1.1); /* Slight zoom for interactivity */
+}
+
+
 /* Prize Page Styling */
 #prize-container {
     margin: 20px auto;
@@ -458,33 +474,6 @@ body {
     font-family: 'Playfair Display', serif;
 }
 
-/* Paragraph Styling */
-.intro-text {
-    font-size: 1.2rem;
-    line-height: 1.8;
-    margin: 20px 0;
-    color: #2c3e50;
-}
-
-/* Image Sections */
-#dusseldorf-images a, #airbnb-images a {
-    display: block;
-    margin-bottom: 20px;
-}
-
-#dusseldorf-images img, #airbnb-images img {
-    width: 100%; /* Full width for vertical stacking */
-    max-width: 300px;
-    margin: 0 auto;
-    border-radius: 10px;
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-#dusseldorf-images img:hover, #airbnb-images img:hover {
-    transform: scale(1.05); /* Slight zoom on hover */
-}
-
 /* Links Section */
 #links-container ul {
     list-style-type: none;
@@ -498,11 +487,52 @@ body {
 
 #links-container ul li a {
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     color: #27ae60;
-    transition: color 0.3s;
+    font-family: 'Lora', serif; /* Consistent with body text */
+    transition: color 0.3s ease;
 }
 
 #links-container ul li a:hover {
     color: #1e8449;
 }
+
+
+/* Prize Page Styling */
+#prize-container {
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
+.main-heading {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #e74c3c;
+    font-family: 'Playfair Display', serif; /* Elegant serif font for titles */
+    font-weight: 700;
+}
+
+.section-heading {
+    font-size: 2.2rem;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    color: #34495e;
+    font-family: 'Dancing Script', cursive; /* Fun, cursive font for sections */
+    font-weight: 600;
+}
+
+/* Paragraph Styling */
+.intro-text {
+    font-size: 1.3rem;
+    line-height: 1.9;
+    margin: 20px 0;
+    color: #2c3e50;
+    font-family: 'Lora', serif; /* Clean and legible serif font */
+}
+
