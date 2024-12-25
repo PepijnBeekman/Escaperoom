@@ -251,6 +251,23 @@ body {
     cursor: pointer;
 }
 
+#next-room-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none; /* Hidden by default */
+    transition: background-color 0.3s ease;
+}
+
+#next-room-button:hover {
+    background-color: #1e8449;
+}
+
 #image-container {
     position: relative;
     width: 100%;
