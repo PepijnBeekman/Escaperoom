@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
         word.setAttribute("draggable", "true");
         word.addEventListener("dragstart", (e) => {
             e.dataTransfer.setData("text/plain", word.dataset.target || "");
+            console.log(`Dragging: ${word.textContent}`);
         });
     });
 
@@ -54,19 +55,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 const allCorrect = [...dropTargets].every((t) => t.classList.contains("correct"));
                 if (allCorrect) {
-                    updateKeyOutline();
+                    console.log("All targets matched. Unlocking next room and updating key.");
+                    updateKeyOutline(); // Level up the key
                     document.getElementById("next-room-button").style.display = "block";
                 }
             }
         });
     });
 
-    let keyLevel = 0;
+    let keyLevel = 0; // Initialize key progression
     function updateKeyOutline() {
         keyLevel++;
         const keyOutline = document.getElementById("key-outline");
         if (keyOutline) {
             keyOutline.src = `images/key${keyLevel}.png`;
+            console.log(`Key updated to level: ${keyLevel}`);
         }
     }
 
