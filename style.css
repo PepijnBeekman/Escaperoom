@@ -213,12 +213,20 @@ body {
 
 /* Key outline scaling */
 #key-outline {
-    display: block;
-    margin: 20px auto;
-    width: 50%; /* Scales to 50% of the container width */
-    max-width: 300px; /* Ensures the key doesn’t get too large */
+    width: 100px;
     height: auto;
-    cursor: default;
+    margin: 20px auto;
+    display: block;
+    transition: transform 0.2s ease;
+    cursor: not-allowed; /* Default cursor */
+}
+
+#key-outline:hover {
+    transform: scale(1.1); /* Subtle hover effect */
+}
+
+#key-outline[style*="pointer"] {
+    cursor: pointer; /* Change cursor when clickable */
 }
 
 /* Word container for 3x3 grid */
@@ -249,23 +257,6 @@ body {
     color: white;
     border-radius: 5px;
     cursor: pointer;
-}
-
-#next-room-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    background-color: #27ae60;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    display: none; /* Hidden by default */
-    transition: background-color 0.3s ease;
-}
-
-#next-room-button:hover {
-    background-color: #1e8449;
 }
 
 #image-container {

@@ -56,18 +56,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 successfulDrops++;
                 console.log(`Successful drops: ${successfulDrops}`);
 
-                updateKeyOutline(successfulDrops);
+                updateKeyOutline(successfulDrops); // Level up the key
 
                 if (successfulDrops === dropTargets.length) {
-                    console.log("All targets matched. Unlocking next room.");
-                    const keyOutline = document.getElementById("key-outline");
-                    if (keyOutline && keyOutline.src.includes("key3.png")) {
-                        const nextRoomButton = document.getElementById("next-room-button");
-                        nextRoomButton.style.display = "block";
-                        console.log("Next Room button displayed.");
-                    }
+                    console.log("All targets matched. Key is now clickable.");
+                    makeKeyClickable();
                 }
-                
             } else {
                 console.log("Incorrect drop.");
             }
@@ -79,6 +73,17 @@ document.addEventListener("DOMContentLoaded", () => {
         if (keyOutline) {
             keyOutline.src = `images/key${level}.png`;
             console.log(`Key updated to level: ${level}`);
+        }
+    }
+
+    function makeKeyClickable() {
+        const keyOutline = document.getElementById("key-outline");
+        if (keyOutline) {
+            keyOutline.style.cursor = "pointer"; // Indicate interactivity
+            keyOutline.addEventListener("click", () => {
+                console.log("Key clicked. Transitioning to Room 2.");
+                showRoom("room-2");
+            });
         }
     }
 
