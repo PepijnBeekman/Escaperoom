@@ -60,7 +60,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 if (successfulDrops === dropTargets.length) {
                     console.log("All targets matched. Unlocking next room.");
-                    document.getElementById("next-room-button").style.display = "block";
+                    const keyOutline = document.getElementById("key-outline");
+                    if (keyOutline && keyOutline.src.includes("key3.png")) {
+                        document.getElementById("next-room-button").style.display = "block";
+                    }
                 }
             } else {
                 console.log("Incorrect drop.");
