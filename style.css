@@ -298,55 +298,68 @@ iframe {
     font-family: 'Arial', sans-serif;
 }
 
-/* Prize Container Styling */
+body {
+    background: linear-gradient(120deg, #fefefe, #f8f8f8);
+    color: #2c3e50;
+    font-family: 'Lora', serif;
+    margin: 0;
+    padding: 0;
+}
+
 #prize-container {
     margin: 20px auto;
     max-width: 800px;
     text-align: center;
-    font-family: 'Arial', sans-serif;
 }
 
 /* Headings */
 .main-heading {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     margin-bottom: 20px;
     color: #e74c3c;
     font-family: 'Playfair Display', serif;
 }
 
 .section-heading {
-    font-size: 1.8rem;
+    font-size: 2rem;
     margin-top: 40px;
     margin-bottom: 20px;
-    color: #2c3e50;
-    font-family: 'Dancing Script', cursive;
+    color: #34495e;
+    font-family: 'Playfair Display', serif;
 }
 
-/* Image Wrappers */
-#dusseldorf-images, #airbnb-images {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
+/* Paragraphs */
+.intro-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
     margin: 20px 0;
+    color: #2c3e50;
+}
+
+/* Image Sections */
+#dusseldorf-images a, #airbnb-images a {
+    display: block;
+    margin-bottom: 20px;
 }
 
 #dusseldorf-images img, #airbnb-images img {
-    max-width: 150px;
-    height: auto;
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
+    width: 100%; /* Full width for vertical stacking */
+    max-width: 300px;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
 }
 
-#dusseldorf-images a, #airbnb-images a {
-    text-decoration: none;
+#dusseldorf-images img:hover, #airbnb-images img:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
 }
 
-/* Links Styling */
+/* Links */
 #links-container ul {
     list-style-type: none;
     padding: 0;
+    margin-top: 20px;
 }
 
 #links-container ul li {
@@ -355,11 +368,11 @@ iframe {
 
 #links-container ul li a {
     text-decoration: none;
+    font-size: 1.2rem;
     color: #27ae60;
-    font-size: 1.1rem;
+    transition: color 0.3s;
 }
 
 #links-container ul li a:hover {
-    text-decoration: underline;
     color: #1e8449;
 }
