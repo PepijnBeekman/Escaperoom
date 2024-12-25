@@ -291,3 +291,44 @@ iframe {
 #go-to-destination:hover {
     background-color: #1e8449;
 }
+#prize-container {
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+}
+
+#dusseldorf-images, #airbnb-images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+#dusseldorf-images img, #airbnb-images img {
+    max-width: 150px;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#links-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#links-container ul li {
+    margin: 10px 0;
+}
+
+#links-container ul li a {
+    text-decoration: none;
+    color: #27ae60;
+    font-size: 1.1rem;
+}
+
+#links-container ul li a:hover {
+    text-decoration: underline;
+    color: #1e8449;
+}
