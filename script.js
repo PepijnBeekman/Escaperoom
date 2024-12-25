@@ -171,6 +171,19 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
+ 
+
+  // Add event listener for the "Begin Escaperoom" button
+    const startButton = document.getElementById("start-escape");
+    if (startButton) {
+        console.log("Start button found. Adding click event listener.");
+        startButton.addEventListener("click", () => {
+            console.log("Start button clicked. Transitioning to Room 3.");
+            showRoom("room-3"); // Ensure `showRoom` is defined elsewhere
+        });
+    } else {
+        console.error("Start button (#start-escape) not found in the DOM.");
+    }
 
     // Room 3 functionality
     const destinationInput = document.getElementById("destination-input");
@@ -181,7 +194,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const destination = destinationInput.value.trim().toLowerCase();
             if (destination === "düsseldorf" || destination === "dusseldorf") {
                 console.log("Correct destination entered. Redirecting...");
-                window.location.href = "prize.html"; // Adjust to the prize webpage path
+                window.location.href = "prize.html"; // Redirect to the prize page
             } else {
                 alert("Probeer het nog eens. Tip: Het begint met een 'D'.");
             }

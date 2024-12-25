@@ -536,3 +536,87 @@ body {
     font-family: 'Lora', serif; /* Clean and legible serif font */
 }
 
+/* General Body Styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lora', serif; /* Classy serif font */
+    background-color: #f8e8e8; /* Classy pink background */
+    color: #2c3e50;
+    line-height: 1.6;
+}
+
+/* Prize Page Styling */
+#prize-container {
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
+.main-heading {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #e74c3c;
+    font-family: 'Playfair Display', serif; /* Elegant serif font for titles */
+    font-weight: 700;
+}
+
+.section-heading {
+    font-size: 2.2rem;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    color: #34495e;
+    font-family: 'Dancing Script', cursive; /* Romantic and fun cursive font */
+    font-weight: 600;
+}
+
+/* Paragraph Styling */
+.intro-text {
+    font-size: 1.3rem;
+    line-height: 1.9;
+    margin: 20px 0;
+    color: #2c3e50;
+    font-family: 'Lora', serif; /* Clean and legible serif font */
+}
+
+/* Links Section */
+#links-container ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+#links-container ul li {
+    margin: 10px 0;
+}
+
+#links-container ul li a {
+    text-decoration: none;
+    font-size: 1.3rem;
+    color: #27ae60;
+    font-family: 'Lora', serif; /* Classy serif font consistent with body text */
+    transition: color 0.3s ease;
+}
+
+#links-container ul li a:hover {
+    color: #1e8449;
+}
+
+/* Image Sections */
+#dusseldorf-images img, #airbnb-images img {
+    width: 100%; /* Full width for vertical stacking */
+    max-width: 300px;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+#dusseldorf-images img:hover, #airbnb-images img:hover {
+    transform: scale(1.1); /* Subtle hover zoom */
+}
