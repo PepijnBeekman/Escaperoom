@@ -120,7 +120,7 @@ body {
 #intro-content h1, #intro-content p {
     color: white;
     text-shadow: 2px 2px 4px black;
-    font-family: 'Playfair Display', serif; /* Elegant serif font for the heading */
+    font-family: 'Dancing Script', cursive;
 }
 
 #intro-content h1 {
