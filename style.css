@@ -3,11 +3,13 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Lora', serif;
-    background-image: url('images/refined-background.jpg'); /* Refined background image */
+    background-image: url('images/refined-background.jpg'); /* Background image */
     background-size: cover;
     background-attachment: fixed;
-    color: #2c3e50;
-    line-height: 1.6;
+    background-color: #f8e8e8; /* Classy pink background */
+    overflow-y: auto;
+    transition: background-image 0.5s ease-in-out;
+    font-family: 'Dancing Script', cursive;
 }
 
 /* Prize Page Styling */
@@ -26,7 +28,7 @@ body {
     font-size: 3rem;
     margin-bottom: 20px;
     color: #e74c3c;
-    font-family: 'Playfair Display', serif; /* Elegant serif font */
+    font-family: 'Playfair Display', serif;
     font-weight: 700;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
@@ -36,7 +38,7 @@ body {
     margin-top: 40px;
     margin-bottom: 20px;
     color: #34495e;
-    font-family: 'Dancing Script', cursive; /* Fun, cursive font */
+    font-family: 'Dancing Script', cursive;
     font-weight: 600;
 }
 
@@ -46,7 +48,6 @@ body {
     line-height: 1.9;
     margin: 20px 0;
     color: #2c3e50;
-    font-family: 'Lora', serif; /* Clean and legible serif font */
 }
 
 /* Links Section */
@@ -86,7 +87,7 @@ body {
     transform: scale(1.1); /* Subtle hover zoom */
 }
 
-/* Room Styles */
+/* Global room styles */
 .room {
     display: none;
     flex-direction: column;
@@ -105,6 +106,380 @@ body {
 }
 
 /* Intro Room */
+#intro {
+    background-image: url('images/ChristmasBackground.jpg');
+    background-size: cover;
+    background-position: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+}
+
+#intro-content h1, #intro-content p {
+    color: white;
+    text-shadow: 2px 2px 4px black;
+    margin: 10px;
+}
+
+#intro-content h1 {
+    font-size: 3rem;
+}
+
+#intro-content p {
+    font-size: 1.5rem;
+}
+
+#intro-content button {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    padding: 10px 20px;
+    background-color: #e74c3c;
+    color: gold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#intro-content button:hover {
+    background-color: #c0392b;
+}
+
+/* Room 1 */
+
+#room-1 .word {
+    margin: 5px;
+    padding: 5px 10px;
+    background-color: #f1c40f;
+    border: 1px solid #d35400;
+    border-radius: 3px;
+    cursor: pointer;
+    user-select: none;
+}
+
+#room-1 #image-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 20px 0;
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#room-1 #image-container img {
+    width: 100%;
+    height: auto;
+}
+
+#room-1 .drop-target {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.2); /* Highlight for testing */
+    border: 1px dashed #000;
+}
+
+/* Target styles */
+#fireplace-target {
+    position: absolute;
+    width: 35%;
+    height: 25%;
+    left: calc(18% - 17.5%);
+    top: calc(65% - 12.5%);
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px dashed #000;
+}
+
+#pot-target {
+    position: absolute;
+    width: 15%;
+    height: 11%;
+    left: calc(15% - 7.5%);
+    top: calc(85% - 5.5%);
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px dashed #000;
+}
+
+#tree-target {
+    position: absolute;
+    width: 22%;
+    height: 66%;
+    left: calc(89% - 11%);
+    top: calc(50% - 33%);
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px dashed #000;
+}
+
+/* Key outline scaling */
+#key-outline {
+    display: block;
+    margin: 20px auto;
+    width: 50%; /* Scales to 50% of the container width */
+    max-width: 300px; /* Ensures the key doesn’t get too large */
+    height: auto;
+    cursor: default;
+}
+
+/* Word container for 3x3 grid */
+#word-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    justify-items: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.word {
+    padding: 10px;
+    background-color: #f1c40f;
+    border: 1px solid #d35400;
+    border-radius: 5px;
+    text-align: center;
+    cursor: grab;
+    user-select: none;
+}
+
+
+#room-1 #hint-button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #c0392b;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#image-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    height: auto;
+}
+
+#room2-background {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.object {
+    position: absolute;
+    transform: translate(-50%, -50%); /* Center objects on their coordinates */
+}
+
+
+/* Specific positions for each object */
+#pizza {
+    width: 21%; /* Adjust to fit the pizza size */
+    left: 35%; /* Percentage of container width */
+    top: 68%; /* Percentage of container height */
+}
+
+#sushi {
+    width: 20%;
+    left: 68%;
+    top: 67%;
+}
+
+#flag {
+    width: 17%;
+    left: 85%;
+    top: 42%;
+}
+#code-input-container {
+    margin-top: 20px;
+    text-align: center;
+    display: none; /* Initially hidden */
+}
+
+#code-input-container label {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+#code-input {
+    padding: 10px;
+    font-size: 1rem;
+    width: 200px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#submit-code {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#submit-code:hover {
+    background-color: #1e8449;
+}
+#maps-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+iframe {
+    border: none;
+}
+
+#destination-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#destination-container label {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+#destination-input {
+    padding: 10px;
+    font-size: 1rem;
+    width: 300px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#go-to-destination {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#go-to-destination:hover {
+    background-color: #1e8449;
+}
+#prize-container {
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background: linear-gradient(120deg, #fefefe, #f8f8f8);
+    color: #2c3e50;
+    font-family: 'Lora', serif;
+    margin: 0;
+    padding: 0;
+}
+
+#prize-container {
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: center;
+}
+
+/* Headings */
+.main-heading {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    color: #e74c3c;
+    font-family: 'Playfair Display', serif;
+}
+
+.section-heading {
+    font-size: 2rem;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    color: #34495e;
+    font-family: 'Playfair Display', serif;
+}
+
+/* Paragraphs */
+.intro-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin: 20px 0;
+    color: #2c3e50;
+}
+
+/* Image Sections */
+#dusseldorf-images a, #airbnb-images a {
+    display: block;
+    margin-bottom: 20px;
+}
+
+#dusseldorf-images img, #airbnb-images img {
+    width: 100%; /* Full width for vertical stacking */
+    max-width: 300px;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+#dusseldorf-images img:hover, #airbnb-images img:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* Links */
+#links-container ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+#links-container ul li {
+    margin: 10px 0;
+}
+
+#links-container ul li a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: #27ae60;
+    transition: color 0.3s;
+}
+
+#links-container ul li a:hover {
+    color: #1e8449;
+}
+/* General Body Styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lora', serif;
+    background: linear-gradient(120deg, #fefefe, #f8f8f8);
+    color: #2c3e50;
+    line-height: 1.6;
+}
+
+/* Room Styles */
+.room {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.room.active {
+    display: flex;
+    opacity: 1;
+}
+
+/* Intro Room Styling */
 #intro {
     background-image: url('images/ChristmasBackground.jpg');
     background-size: cover;
@@ -131,12 +506,320 @@ body {
     font-size: 1.5rem;
 }
 
-/* Key outline scaling */
-#key-outline {
-    display: block;
+
+/* Image Sections */
+#dusseldorf-images img, #airbnb-images img {
+    width: 100%; /* Full width for vertical stacking */
+    max-width: 300px;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+#dusseldorf-images img:hover, #airbnb-images img:hover {
+    transform: scale(1.1); /* Slight zoom for interactivity */
+}
+
+
+/* Prize Page Styling */
+#prize-container {
     margin: 20px auto;
-    width: 50%; /* Scales to 50% of the container width */
-    max-width: 300px; /* Ensures the key doesn’t get too large */
-    height: auto;
-    cursor: default;
+    max-width: 800px;
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
+.main-heading {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    color: #e74c3c;
+    font-family: 'Playfair Display', serif;
+}
+
+.section-heading {
+    font-size: 2rem;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    color: #34495e;
+    font-family: 'Playfair Display', serif;
+}
+
+/* Links Section */
+#links-container ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+#links-container ul li {
+    margin: 10px 0;
+}
+
+#links-container ul li a {
+    text-decoration: none;
+    font-size: 1.3rem;
+    color: #27ae60;
+    font-family: 'Lora', serif; /* Consistent with body text */
+    transition: color 0.3s ease;
+}
+
+#links-container ul li a:hover {
+    color: #1e8449;
+}
+
+
+/* Prize Page Styling */
+#prize-container {
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
+.main-heading {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #e74c3c;
+    font-family: 'Playfair Display', serif; /* Elegant serif font for titles */
+    font-weight: 700;
+}
+
+.section-heading {
+    font-size: 2.2rem;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    color: #34495e;
+    font-family: 'Dancing Script', cursive; /* Fun, cursive font for sections */
+    font-weight: 600;
+}
+
+/* Paragraph Styling */
+.intro-text {
+    font-size: 1.3rem;
+    line-height: 1.9;
+    margin: 20px 0;
+    color: #2c3e50;
+    font-family: 'Lora', serif; /* Clean and legible serif font */
+}
+
+/* General Body Styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lora', serif; /* Classy serif font */
+    background-color: #f8e8e8; /* Classy pink background */
+    color: #2c3e50;
+    line-height: 1.6;
+}
+
+/* Prize Page Styling */
+#prize-container {
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
+.main-heading {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #e74c3c;
+    font-family: 'Playfair Display', serif; /* Elegant serif font for titles */
+    font-weight: 700;
+}
+
+.section-heading {
+    font-size: 2.2rem;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    color: #34495e;
+    font-family: 'Dancing Script', cursive; /* Romantic and fun cursive font */
+    font-weight: 600;
+}
+
+/* Paragraph Styling */
+.intro-text {
+    font-size: 1.3rem;
+    line-height: 1.9;
+    margin: 20px 0;
+    color: #2c3e50;
+    font-family: 'Lora', serif; /* Clean and legible serif font */
+}/* General Body Styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lora', serif;
+    background-image: url('images/refined-background.jpg'); /* Your refined background image */
+    background-size: cover;
+    background-attachment: fixed;
+    color: #2c3e50;
+    line-height: 1.6;
+}
+
+/* Prize Page Styling */
+#prize-container {
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
+.main-heading {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #e74c3c;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.section-heading {
+    font-size: 2.2rem;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    color: #34495e;
+    font-family: 'Dancing Script', cursive;
+    font-weight: 600;
+}
+
+/* Paragraph Styling */
+.intro-text {
+    font-size: 1.3rem;
+    line-height: 1.9;
+    margin: 20px 0;
+    color: #2c3e50;
+}
+
+/* Links Section */
+#links-container ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+#links-container ul li {
+    margin: 10px 0;
+}
+
+#links-container ul li a {
+    text-decoration: none;
+    font-size: 1.3rem;
+    color: #27ae60;
+    font-family: 'Lora', serif;
+    transition: color 0.3s ease;
+}
+
+#links-container ul li a:hover {
+    color: #1e8449;
+}
+
+/* Image Sections */
+#dusseldorf-images img, #airbnb-images img {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+#dusseldorf-images img:hover, #airbnb-images img:hover {
+    transform: scale(1.1);
+}
+
+
+#dusseldorf-images img:hover, #airbnb-images img:hover {
+    transform: scale(1.1); /* Subtle hover zoom */
+}
+
+* Prize Page Styling */
+#prize-container {
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
+.main-heading {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #e74c3c;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.section-heading {
+    font-size: 2.2rem;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    color: #34495e;
+    font-family: 'Dancing Script', cursive;
+    font-weight: 600;
+}
+
+/* Paragraph Styling */
+.intro-text {
+    font-size: 1.3rem;
+    line-height: 1.9;
+    margin: 20px 0;
+    color: #2c3e50;
+}
+
+/* Links Section */
+#links-container ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+#links-container ul li {
+    margin: 10px 0;
+}
+
+#links-container ul li a {
+    text-decoration: none;
+    font-size: 1.3rem;
+    color: #27ae60;
+    font-family: 'Lora', serif;
+    transition: color 0.3s ease;
+}
+
+#links-container ul li a:hover {
+    color: #1e8449;
+}
+
+/* Image Sections */
+#dusseldorf-images img, #airbnb-images img {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+#dusseldorf-images img:hover, #airbnb-images img:hover {
+    transform: scale(1.1); /* Subtle hover zoom */
 }
